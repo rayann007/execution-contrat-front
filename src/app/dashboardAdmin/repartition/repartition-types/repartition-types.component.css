@@ -1,0 +1,30 @@
+.chart-container {
+  background-color: #062c4f;
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  
+}
+/* .chart-container canvas {
+  height: 265px !important; /* Ajuste selon le rendu souhaité 
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 22px;
+  
+}
+*/
+.chart-container canvas {
+  height: 275px !important;
+  width: 100%;
+  max-width: 250px;          /* optionnel pour limiter la taille réelle */
+  display: block;
+  margin: 12px auto 22px auto; /* ⬅️ centré horizontalement */
+}
+h3{
+  font-size: 30px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}

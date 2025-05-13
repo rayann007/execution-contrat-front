@@ -1,0 +1,15 @@
+<div class="login-container">
+    <h2><span class="highlight">Empowering</span> connections.</h2>
+    <h1>LEONI</h1>
+  
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <input type="email" placeholder="Email" formControlName="email" />
+      <input type="password" placeholder="Mot de passe" formControlName="password" />
+      <button type="submit">Connexion</button>
+    </form>
+  
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <a class="forgot" href="#">Mot de passe oublié ?</a>
+    <p class="signature">Rayan Gazzah – Local IT Tunisia</p>
+  </div>
+  

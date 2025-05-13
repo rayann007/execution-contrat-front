@@ -1,0 +1,53 @@
+.dashboard-container {
+  background-color: #011530;
+  padding: 24px;
+  min-height: calc(100vh - 112px);
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-dashboard {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2.3fr; /* ✅ repartition légèrement élargie */
+  grid-template-rows: auto auto;
+  gap: 10px;
+  max-width: 1440px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+
+/* Cartes */
+app-contrats-cours {
+  grid-column: 1;
+  grid-row: 1;
+}
+app-contrats-alerte {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* Échéances */
+.echeance-zone {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  height: 100%;
+}
+
+/* Répartition alignée à gauche avec les cartes + échéances */
+app-repartition-types {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  height: 93%;
+  display: flex;
+  align-items: stretch;
+  min-width: 100%;
+}
+
+/* Tableau tout en bas */
+
+.alerte-zone {
+  grid-column: 1 / span 3;
+  margin-top: 24px;
+  margin-right: 30px;
+}

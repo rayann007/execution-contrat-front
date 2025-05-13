@@ -1,0 +1,19 @@
+<div class="contrats-alerte-container">
+  <h3>Contrats en alerte</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Contrat</th>
+        <th>Type</th>
+        <th>Date fin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contrat of contratsEnAlerte">
+        <td>{{ contrat.nomContrat }}</td>
+        <td>{{ contrat.type }}</td>
+        <td>{{ contrat.dateFin | date: 'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

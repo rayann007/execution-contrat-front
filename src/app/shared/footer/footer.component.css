@@ -1,0 +1,23 @@
+.footer-toolbar {
+  background-color: #03224c;
+  color: white;
+  margin-bottom: 10px;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 20px;
+  z-index: 1000;
+}
+
+.footer-left {
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 40px;
+}
+
+.footer-spacer {
+  flex: 1 1 auto;
+}
+
+.footer-right {
+  text-align: right;
+}

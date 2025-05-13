@@ -1,0 +1,13 @@
+<div class="echeances-container">
+  <h3 class="echeances-title">Échéances ce mois</h3>
+  <div class="echeances-separator"></div>
+  <div class="echeances-content">
+    <div class="item" *ngFor="let e of echeances">
+      <div class="icon">
+        <mat-icon>{{ e.icon }}</mat-icon>
+      </div>
+      <div class="date">{{ e.date | date: 'dd' }}</div>
+      <div class="label">{{ e.label }}</div>
+    </div>
+  </div>
+</div>

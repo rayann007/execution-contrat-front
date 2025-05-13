@@ -1,0 +1,46 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 250px;
+  background-color:  #062c4f;
+  color: white;
+  padding-top: 20px;
+}
+
+.logo {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+mat-icon {
+  margin-right: 12px;
+  color: white;
+}
+
+mat-list-item {
+  color: white;
+  font-size: 12px;
+}
+
+mat-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  
+}
+:host ::ng-deep .mat-drawer {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+:host ::ng-deep .mdc-list-item__primary-text {
+  color: white !important;
+}
+
+:host ::ng-deep .mdc-list-item:hover .mdc-list-item__primary-text {
+  color: white !important;
+}
+
