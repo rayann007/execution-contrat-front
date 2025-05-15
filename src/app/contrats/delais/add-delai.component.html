@@ -5,19 +5,12 @@
     <label>Date :</label>
     <input type="date" [(ngModel)]="delai.date" name="date" required />
 
-    <label>Jours de retard :</label>
-    <input type="number" [(ngModel)]="delai.joursRetard" name="joursRetard" />
-
     <label>Montant pénalité (par jour) :</label>
     <input type="number" [(ngModel)]="delai.montantPenaliteJournalier" name="montantPenaliteJournalier" />
 
     <label>Commentaire :</label>
     <textarea [(ngModel)]="delai.commentaire" name="commentaire" rows="3"></textarea>
 
-    <div class="checkboxes">
-      <label><input type="checkbox" [(ngModel)]="delai.respecteDelai" name="respecteDelai" /> Respecte le délai</label>
-      <label><input type="checkbox" [(ngModel)]="delai.penalitePayee" name="penalitePayee" /> Pénalité payée</label>
-    </div>
 
     <button type="submit">Enregistrer</button>
   </form>

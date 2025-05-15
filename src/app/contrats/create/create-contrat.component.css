@@ -1,11 +1,10 @@
 .create-contrat-box {
-  background-color: #062c4f;
+  background-color: #011530;
   color: white;
   padding: 32px;
-  border-radius: 14px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  max-width: 960px;
-  margin: 40px auto;
+  width: 100%; /* Changed from max-width */
+  box-sizing: border-box; /* Includes padding in width calculation */
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -121,4 +120,35 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #218838;
+}
+
+.add-detail-section h3 {
+  font-size: 16px;
+  color: #8ecafc;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.add-detail-btn {
+  background-color: #1e88e5;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.add-detail-btn span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-detail-btn:hover {
+  background-color: #1565c0;
 }
