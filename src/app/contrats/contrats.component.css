@@ -1,0 +1,6 @@
+.contrats-wrapper {
+  padding: 24px;
+  background-color: #011530;
+  min-height: calc(100vh - 112px); /* ajuste si tu as un header/footer */
+  color: white;
+}

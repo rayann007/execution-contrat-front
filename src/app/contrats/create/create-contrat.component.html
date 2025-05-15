@@ -1,0 +1,54 @@
+<div class="create-contrat-box">
+  <h2>Créer un contrat</h2>
+
+  <form class="contrat-form">
+
+    <div class="form-row">
+      <input type="text" placeholder="Référence contrat" />
+      <input type="text" placeholder="Nom du contrat" />
+    </div>
+
+    <div class="form-row type-radio">
+      <label>Type de contrat :</label>
+      <label><input type="radio" name="type" value="Travaux" /> Travaux</label>
+      <label><input type="radio" name="type" value="Prestation" /> Prestation</label>
+      <label><input type="radio" name="type" value="Continu" /> Continu</label>
+    </div>
+
+    <div class="form-row">
+      <input type="text" placeholder="Prestataire" />
+      <select>
+        <option disabled selected>Service concerné</option>
+        <option>RH</option>
+        <option>Maintenance</option>
+        <option>IT</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <input type="text" placeholder="Responsable Leoni" />
+      <input type="email" placeholder="Email responsable" />
+    </div>
+
+    <div class="form-row full-width">
+  <label for="emails">Emails des personnes dédiées</label>
+  <textarea id="emails" rows="3" placeholder="Ex: nom1@mail.tn, nom2@mail.tn"></textarea>
+</div>
+
+    <div class="form-row">
+  <div class="date-block">
+    <label for="startDate">Date de début</label>
+    <input type="date" id="startDate" />
+  </div>
+  <div class="date-block">
+    <label for="endDate">Date de fin</label>
+    <input type="date" id="endDate" />
+  </div>
+</div>
+
+    <div class="form-footer">
+      <button type="submit">Créer un contrat </button>
+    </div>
+
+  </form>
+</div>
