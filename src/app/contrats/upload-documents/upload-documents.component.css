@@ -1,0 +1,20 @@
+.upload-box {
+  border: 1px dashed #3a91f9;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  color: #cce5ff;
+  background-color: #062c4f;
+}
+
+.upload-button {
+  color: #29b6f6;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.file-list {
+  margin-top: 10px;
+  color: #e3f2fd;
+  font-size: 14px;
+}
