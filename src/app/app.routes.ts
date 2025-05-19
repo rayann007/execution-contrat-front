@@ -4,6 +4,7 @@ import { LoginComponent } from '../auth/login/login.component';
 import { DashboardAdminComponent } from './dashboardAdmin/dashboard-admin.component';
 import { CreateContratComponent } from './contrats/create/create-contrat.component';
 import { ContratsComponent } from './contrats/contrats.component';
+import { SuivreContratComponent } from './suivre-contrat/suivre-contrat.component';
 
 
 
@@ -12,7 +13,8 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardAdminComponent },
   { path: 'creer-contrat', component: CreateContratComponent },
-  { path: 'contrats', component: ContratsComponent ,}
+  { path: 'contrats', component: ContratsComponent },
+  { path: 'suivre-contrat', component: SuivreContratComponent },
 
 ];
 

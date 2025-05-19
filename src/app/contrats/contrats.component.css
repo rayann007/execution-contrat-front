@@ -1,6 +1,57 @@
 .contrats-wrapper {
   padding: 24px;
   background-color: #011530;
-  min-height: calc(100vh - 112px); /* ajuste si tu as un header/footer */
+  min-height: 100vh;
   color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Ligne contenant les 2 formulaires */
+.contrat-delai-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Les composants prennent chacun 50% (ajustable) */
+app-create-contrat,
+app-add-delai {
+  flex: 1;
+  min-width: 400px;
+  max-width: 48%;
+
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Upload centré ou aligné à droite en bas */
+.upload-zone {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end; /* ou center */
+  
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+.contrat-delai-line {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+app-create-contrat,
+app-add-delai {
+  flex: 1;
+  padding: 24px;
+  background-color: #062c4f;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  min-width: 420px;
 }

@@ -1,0 +1,76 @@
+.contrats-wrapper {
+  padding: 20px;
+  background-color: #011530;
+  color: white;
+  min-height: 100vh;
+  font-size: 20px;
+  
+}
+
+.contrats-filtres {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.contrats-filtres input,
+.contrats-filtres select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+.table-contrats {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-contrats th,
+.table-contrats td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #334b6e;
+  text-align: left;
+}
+
+.table-contrats th {
+  background-color: #062c4f;
+  color: #cde4ff;
+}
+
+.table-contrats tr:hover {
+  background-color: #0d2f4f;
+}
+
+button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #1e88e5;
+  color: white;
+  cursor: pointer;
+}
+.filtre-date {
+  display: flex;
+  flex-direction: column;
+  margin-right: 12px;
+}
+
+.filtre-date label {
+  font-size: 13px;
+  color: #90cdf4;
+  margin-bottom: 4px;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filters input,
+.filters select {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}

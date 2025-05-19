@@ -51,6 +51,10 @@ createContrat(contrat: any): Observable<any> {
   return this.http.post(`${this.baseUrl}`, contrat);
 }
 
-
+getAllContrats(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}`, {
+      headers: this.getAuthHeaders()
+    });
+  }
 
 }

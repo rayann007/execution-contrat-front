@@ -1,10 +1,10 @@
 .upload-box {
-  border: 1px dashed #3a91f9;
+  border: 1px dashed #011530;
   padding: 16px;
-  border-radius: 8px;
-  text-align: center;
+  text-align: right ;
   color: #cce5ff;
-  background-color: #062c4f;
+  background-color: #011530;
+  
 }
 
 .upload-button {
