@@ -47,5 +47,10 @@ getContratsEnAlerte(): Observable<any[]> {
     headers: this.getAuthHeaders()
   });
 }
+createContrat(contrat: any): Observable<any> {
+  return this.http.post(`${this.baseUrl}`, contrat);
+}
+
+
 
 }

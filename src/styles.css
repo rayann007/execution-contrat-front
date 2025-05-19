@@ -4,3 +4,20 @@ body {
   
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.snackbar-success {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+}
+
+.snackbar-error {
+  background-color: #dc3545;
+  color: white;
+  font-weight: bold;
+}
+
+.snackbar-warning {
+  background-color: #ffc107;
+  color: black;
+  font-weight: bold;
+}

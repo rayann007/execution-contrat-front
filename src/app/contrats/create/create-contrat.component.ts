@@ -1,13 +1,18 @@
-import { Component, input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common';
 import { MatNativeDateModule } from '@angular/material/core';
+
+import { ContratService } from '../../../services/contrat.service';
 
 @Component({
   selector: 'app-create-contrat',
@@ -21,35 +26,61 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
-
+    MatButtonModule,
+    MatSnackBarModule,
   ],
   templateUrl: './create-contrat.component.html',
   styleUrls: ['./create-contrat.component.css']
 })
 export class CreateContratComponent implements OnInit {
   contratForm!: FormGroup;
-  services = ['RH', 'Finance', 'Logistique', 'IT' , 'Batiment'];
+  services = ['RH', 'Finance', 'Logistique', 'IT', 'Batiment'];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private contratService: ContratService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.contratForm = this.fb.group({
-      reference: [''],
-      nomContrat: [''],
-      type: ['Travaux'],
-      prestataire: [''],
-      serviceConcerne: [''],
-      responsableLeoni: [''],
-      emailResponsable: [''],
-      emailsPersonnesDediees: [''],
-      dateDebut: [''],
-      dateFin: ['']
+      reference: ['', Validators.required],
+      nomContrat: ['', Validators.required],
+      type: ['Travaux', Validators.required],
+      prestataire: ['', Validators.required],
+      serviceConcerne: ['', Validators.required],
+      responsableLeoni: ['', Validators.required],
+      emailResponsable: ['', [Validators.required, Validators.email]],
+      emailsPersonnesDediees: ['', Validators.required],
+      dateDebut: ['', Validators.required],
+      dateFin: ['', Validators.required]
     });
   }
 
   onSubmit(): void {
-    console.log(this.contratForm.value);
-    // ici tu appelles ton service pour enregistrer en base
+    if (this.contratForm.valid) {
+      this.contratService.createContrat(this.contratForm.value).subscribe({
+        next: () => {
+          this.snackBar.open('✅ Contrat créé avec succès !', 'Fermer', {
+            duration: 3000,
+            panelClass: ['snackbar-success']
+          });
+          this.router.navigate(['/contrats']);
+        },
+        error: (err: any) => {
+          console.error('❌ Erreur lors de la création du contrat', err);
+          this.snackBar.open('❌ Échec de création du contrat', 'Fermer', {
+            duration: 3000,
+            panelClass: ['snackbar-error']
+          });
+        }
+      });
+    } else {
+      this.snackBar.open('❗ Formulaire incomplet ou invalide', 'Fermer', {
+        duration: 3000,
+        panelClass: ['snackbar-warning']
+      });
+    }
   }
 }

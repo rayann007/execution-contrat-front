@@ -6,6 +6,7 @@ import { CreateContratComponent } from './contrats/create/create-contrat.compone
 import { ContratsComponent } from './contrats/contrats.component';
 
 
+
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
