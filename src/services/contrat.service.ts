@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Contrat } from '../app/models/contrat.model';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -56,5 +59,14 @@ getAllContrats(): Observable<any[]> {
       headers: this.getAuthHeaders()
     });
   }
+getContratById(id: number): Observable<Contrat> {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  return this.http.get<Contrat>(`${this.baseUrl}/${id}`, { headers });
+}
+
 
 }

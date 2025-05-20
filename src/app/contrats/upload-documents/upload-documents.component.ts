@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-upload-documents',
   templateUrl: './upload-documents.component.html',
-  styleUrls: ['./upload-documents.component.css']
+  styleUrls: ['./upload-documents.component.css'],
+  imports: [CommonModule],
 })
 export class UploadDocumentsComponent {
   uploadedFiles: File[] = [];

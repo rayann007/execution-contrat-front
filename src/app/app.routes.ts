@@ -5,6 +5,7 @@ import { DashboardAdminComponent } from './dashboardAdmin/dashboard-admin.compon
 import { CreateContratComponent } from './contrats/create/create-contrat.component';
 import { ContratsComponent } from './contrats/contrats.component';
 import { SuivreContratComponent } from './suivre-contrat/suivre-contrat.component';
+import { DetailContratComponent } from './detail-contrat/detail-contrat.component';
 
 
 
@@ -15,6 +16,8 @@ export const routes: Routes = [
   { path: 'creer-contrat', component: CreateContratComponent },
   { path: 'contrats', component: ContratsComponent },
   { path: 'suivre-contrat', component: SuivreContratComponent },
+  { path: 'contrat/:id', component: DetailContratComponent }
+
 
 ];
 

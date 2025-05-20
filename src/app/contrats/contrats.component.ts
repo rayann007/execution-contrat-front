@@ -8,7 +8,7 @@ import { UploadDocumentsComponent } from "./upload-documents/upload-documents.co
 @Component({
   selector: 'app-contrats',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, CreateContratComponent, AddDelaiComponent, UploadDocumentsComponent],
+  imports: [CommonModule, CreateContratComponent, AddDelaiComponent, UploadDocumentsComponent],
   templateUrl: './contrats.component.html',
   styleUrls: ['./contrats.component.css']
 })

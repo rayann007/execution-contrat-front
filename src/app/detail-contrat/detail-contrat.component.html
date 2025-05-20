@@ -1,0 +1,30 @@
+<div class="contrat-detail-container" *ngIf="contrat">
+  <div class="contrat-card">
+    <div class="header">
+      <h2>Détails du contrat</h2>
+      
+    </div>
+
+    <div class="body-grid">
+      <!-- Colonne gauche -->
+      <div class="infos">
+        <p><strong>Type</strong> : {{ contrat.type }}</p>
+        <p><strong>Nom</strong> : {{ contrat.nomContrat }}</p>
+        <p><strong>Statut</strong> : {{ contrat.statut }}</p>
+        <p><strong>Dates</strong> : {{ contrat.dateDebut }} → {{ contrat.dateFin }}</p>
+        <p><strong>Prestataire</strong> : {{ contrat.prestataire || '-' }}</p>
+        <p><strong>Responsable</strong> : {{ contrat.responsableLeoni }}</p>
+        <p><strong>Emails associés</strong> : {{ contrat.emailsPersonnesDediees }}</p>
+      </div>
+
+      <!-- Colonne droite -->
+      <div class="actions">
+        <h3>Actions</h3>
+        <button class="action">✏️ Modifier</button>
+        <button class="action">📎 Ajouter document</button>
+        <button class="action">📊 Générer rapport</button>
+        <button class="action danger">❌ Résilier contrat</button>
+      </div>
+    </div>
+  </div>
+</div>

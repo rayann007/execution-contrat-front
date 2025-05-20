@@ -1,0 +1,98 @@
+:host {
+  display: block;
+  background-color: #011530;
+  min-height: 100vh;
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #e3f2fd;
+}
+
+/* Carte principale */
+.contrat-card {
+  background-color: #062c4f;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Titre principal */
+.header h2 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #1e4e74;
+  padding-bottom: 8px;
+}
+
+/* Layout principal */
+.body-grid {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+/* Infos du contrat */
+.infos {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+  color: #e3f2fd;
+}
+
+.infos p {
+  margin: 0;
+}
+
+.infos strong {
+  color: #64b5f6;
+}
+
+/* Bloc des actions */
+.actions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: stretch;
+  margin-top: 4px;
+}
+
+.actions h3 {
+  margin-bottom: 6px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* Boutons d’action */
+button.action {
+  padding: 10px 16px;
+  background-color: #1976d2;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button.action:hover {
+  background-color: #1565c0;
+}
+
+button.danger {
+  background-color: #d32f2f;
+}
+
+button.danger:hover {
+  background-color: #b71c1c;
+}
