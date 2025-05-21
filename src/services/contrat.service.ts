@@ -19,7 +19,7 @@ export class ContratService {
       Authorization: `Bearer ${token}`
     });
   }
-
+ 
   getNombreContratsActifsAujourdHui(): Observable<number> {
     return this.http.get<number>(`${this.baseUrl}/count-actifs-aujourdhui`, {
       headers: this.getAuthHeaders()

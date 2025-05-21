@@ -12,7 +12,7 @@
   background-color: #062c4f;
   border-radius: 12px;
   padding: 30px;
-  max-width: 1100px;
+  max-width: 100%;
   margin: 0 auto;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }

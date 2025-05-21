@@ -3,13 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { ContratService } from '../../services/contrat.service';
 import { Contrat } from '../models/contrat.model';
 import { CommonModule } from '@angular/common';
+import { DocumentsComponent } from "./documents/documents.component";
 
 @Component({
   selector: 'app-detail-contrat',
   templateUrl: './detail-contrat.component.html',
   styleUrls: ['./detail-contrat.component.css'],
-  imports: [CommonModule],
-  standalone: true, 
+  imports: [CommonModule, DocumentsComponent],
+  standalone: true,
 })
 export class DetailContratComponent implements OnInit {
   contrat!: Contrat;
