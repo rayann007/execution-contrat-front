@@ -1,0 +1,31 @@
+<h2>Modifier le contrat</h2>
+
+<form [formGroup]="form" (ngSubmit)="valider()">
+  <label>Nom :</label>
+  <input formControlName="nomContrat" type="text" />
+
+  <label>Type :</label>
+  <input formControlName="type" type="text" />
+
+  <label>Statut :</label>
+<input formControlName="statut" type="text" readonly style="background-color: #e0e0e0; color: #666;" />
+
+
+  <label>Date début :</label>
+  <input formControlName="dateDebut" type="date" />
+
+  <label>Date fin :</label>
+  <input formControlName="dateFin" type="date" />
+
+  <label>Prestataire :</label>
+  <input formControlName="prestataire" type="text" />
+
+  <label>Responsable :</label>
+  <input formControlName="responsableLeoni" type="text" />
+
+  <label>Emails associés :</label>
+  <textarea formControlName="emailsPersonnesDediees"></textarea>
+
+  <button type="submit">💾 Enregistrer</button>
+  <button type="button" (click)="annuler()">Annuler</button>
+</form>
