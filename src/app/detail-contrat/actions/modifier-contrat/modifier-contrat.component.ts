@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
@@ -9,7 +9,9 @@ import { Contrat } from '../../../models/contrat.model';
   selector: 'app-modifier-contrat',
   standalone: true,
   imports: [CommonModule, MatDialogModule, ReactiveFormsModule],
-  templateUrl: './modifier-contrat.component.html'
+  templateUrl: './modifier-contrat.component.html',
+   styleUrls: ['./modifier-contrat.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ModifierContratComponent {
   form: FormGroup;
@@ -33,6 +35,7 @@ export class ModifierContratComponent {
 
   valider() {
     this.dialogRef.close(this.form.value);
+    
   }
 
   annuler() {

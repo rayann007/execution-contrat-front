@@ -1,9 +1,10 @@
+/* Polices */
 body {
-    font-family: 'Inter', sans-serif;
-  }
-  
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  margin: 0;
+  font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Snackbar messages */
 .snackbar-success {
   background-color: #28a745;
   color: white;
@@ -20,4 +21,90 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: #ffc107;
   color: black;
   font-weight: bold;
+}
+
+/* Dialog style (Angular Material) */
+::ng-deep .mat-mdc-dialog-surface {
+  background-color: #062c4f !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  max-width: 700px !important;
+  width: 90% !important;
+  height: auto !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  transform: scale(1) !important;
+}
+
+::ng-deep .mat-mdc-dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FORMULAIRE DE MODIFICATION CONTRAT */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+label {
+  font-weight: bold;
+  color: #90caf9;
+  margin-bottom: 4px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e0e0e0;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  min-height: 80px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.actions button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actions button[type="submit"] {
+  background-color: #1976d2;
+  color: white;
+}
+
+.actions button[type="submit"]:hover {
+  background-color: #1565c0;
+}
+
+.actions button[type="button"] {
+  background-color: #eeeeee;
+  color: #333;
+}
+
+.actions button[type="button"]:hover {
+  background-color: #cccccc;
 }

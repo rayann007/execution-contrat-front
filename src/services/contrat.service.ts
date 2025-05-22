@@ -67,6 +67,10 @@ getContratById(id: number): Observable<Contrat> {
 
   return this.http.get<Contrat>(`${this.baseUrl}/${id}`, { headers });
 }
+updateContrat(id: number, contrat: Partial<Contrat>): Observable<Contrat> {
+  const headers = this.getAuthHeaders();
+  return this.http.put<Contrat>(`${this.baseUrl}/${id}`, contrat, { headers });
+}
 
 
 }

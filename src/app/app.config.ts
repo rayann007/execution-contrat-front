@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { provideZoneChangeDetection } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
 import { authInterceptor } from '../auth.interceptor';
@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     importProvidersFrom(MatToolbarModule, MatButtonModule),
-    provideHttpClient(withInterceptors([authInterceptor]))
-
+    provideHttpClient(withInterceptors([authInterceptor])),
+    provideAnimations()
   ]
 };
