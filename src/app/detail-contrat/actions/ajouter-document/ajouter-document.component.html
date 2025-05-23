@@ -1,0 +1,11 @@
+<h2>📎 Ajouter un document</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <label for="fichier">Sélectionner un fichier :</label>
+  <input type="file" id="fichier" (change)="onFileSelected($event)" required />
+
+  <div class="actions">
+    <button type="submit" [disabled]="!selectedFile" (click)="onSubmit()" >💾 Enregistrer</button>
+    <button type="button" (click)="dialogRef.close()">Annuler</button>
+  </div>
+</form>
