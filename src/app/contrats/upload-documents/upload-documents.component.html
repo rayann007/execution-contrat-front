@@ -1,10 +1,5 @@
-<div class="upload-box">
-  <label class="upload-label">
-    Glissez déposez des fichiers ici
-    <input type="file" (change)="onFileSelected($event)" multiple hidden />
-    <span class="upload-button">📎 Ajouter fichier</span>
-  </label>
-  <div class="file-list">
-    <div *ngFor="let file of uploadedFiles">{{ file.name }}</div>
-  </div>
+<div class="upload-documents-container">
+  <button (click)="openUploadDialog()" class="upload-btn">
+    📁 Ajouter un document
+  </button>
 </div>

@@ -1,13 +1,10 @@
 <div class="contrat-detail-container" *ngIf="contrat">
   <div class="contrat-card">
-    <!-- En-tête -->
     <div class="header">
       <h2>Détails du contrat</h2>
     </div>
 
-    <!-- Corps -->
     <div class="body-grid">
-      <!-- Colonne gauche : Infos du contrat -->
       <div class="infos">
         <p><strong>Type</strong> : {{ contrat.type }}</p>
         <p><strong>Nom</strong> : {{ contrat.nomContrat }}</p>
@@ -18,17 +15,17 @@
         <p><strong>Emails associés</strong> : {{ contrat.emailsPersonnesDediees }}</p>
       </div>
 
-      <!-- Colonne droite : Actions -->
       <app-actions
         [contratId]="contrat.id"
         (modifier)="onModifier()"
-        (ajouterDocument)="onAjouterDocument()"
         (genererRapport)="onGenererRapport()"
         (resilierContrat)="onResilierContrat()"
+        (documentAjoute)="onDocumentAjoute()"
       ></app-actions>
     </div>
   </div>
 </div>
 
-<!-- Section documents liés -->
-<app-documents [contratId]="contrat.id"></app-documents>
+<ng-container *ngIf="contrat">
+  <app-documents [contratId]="contrat.id"></app-documents>
+</ng-container>

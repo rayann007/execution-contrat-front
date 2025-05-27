@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContratService } from '../../services/contrat.service';
 import { Contrat } from '../models/contrat.model';
-import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 import { DocumentsComponent } from './documents/documents.component';
 import { ActionsComponent } from './actions/actions.component';
-import { MatDialog } from '@angular/material/dialog';
 import { ModifierContratComponent } from './actions/modifier-contrat/modifier-contrat.component';
-
-
+import { CommonModule } from '@angular/common';
+import { ResilierContratComponent } from './actions/resilier-contrat/resilier-contrat.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -16,15 +16,18 @@ import { ModifierContratComponent } from './actions/modifier-contrat/modifier-co
   standalone: true,
   templateUrl: './detail-contrat.component.html',
   styleUrls: ['./detail-contrat.component.css'],
-  imports: [CommonModule, DocumentsComponent, ActionsComponent]
+  imports: [CommonModule, DocumentsComponent, ActionsComponent ,]
 })
 export class DetailContratComponent implements OnInit {
   contrat!: Contrat;
+
+  @ViewChild(DocumentsComponent) documentsComponent!: DocumentsComponent;
 
   constructor(
     private route: ActivatedRoute,
     private contratService: ContratService,
     private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -40,43 +43,58 @@ export class DetailContratComponent implements OnInit {
     }
   }
 
-  // 🔧 Méthodes actions (à connecter à <app-actions>)
-onModifier() {
-  const dialogRef = this.dialog.open(ModifierContratComponent, {
+  onModifier() {
+    const dialogRef = this.dialog.open(ModifierContratComponent, {
+      disableClose: true,
+      width: '600px',
+      panelClass: 'dialog-centered',
+      data: this.contrat,
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.contratService.updateContrat(this.contrat.id, result).subscribe({
+          next: (updated) => {
+            this.contrat = updated;
+            console.log('✅ Contrat mis à jour');
+          },
+          error: (err) => console.error('❌ Erreur maj', err)
+        });
+      }
+    });
+  }
+
+  onDocumentAjoute() {
+    console.log('📄 Mise à jour des documents...');
+    if (this.documentsComponent) {
+      this.documentsComponent.fetchDocuments();
+    }
+  }
+
+  onGenererRapport() {
+    console.log('📊 Générer rapport');
+  }
+
+ onResilierContrat() {
+  const dialogRef = this.dialog.open(ResilierContratComponent, {
     disableClose: true,
-    width: '600px',
-    panelClass: 'dialog-centered', 
-    data: this.contrat, // on passe le contrat actuel au composant
-    autoFocus: false
+    data: { message: 'Voulez-vous vraiment résilier ce contrat ? Cette action est irréversible.' }
   });
 
-  dialogRef.afterClosed().subscribe((result) => {
-    if (result) {
-      this.contratService.updateContrat(this.contrat.id, result).subscribe({
-        next: (updated) => {
-          this.contrat = updated;
-          console.log('✅ Contrat mis à jour');
+  dialogRef.afterClosed().subscribe((confirmed) => {
+    if (confirmed) {
+      this.contratService.resilierContrat(this.contrat.id).subscribe({
+        next: (message) => {
+          this.contrat.statut = 'résilié';
+          this.snackBar.open(message, '✔️', { duration: 3000 });
         },
-        error: (err) => console.error('❌ Erreur maj', err)
+        error: (err) => {
+          this.snackBar.open('Erreur : ' + err.error, 'Fermer', { duration: 4000 });
+        }
       });
     }
   });
 }
 
-
-
-  onAjouterDocument() {
-    console.log('📎 Ajouter document');
-    // Ouvre une modale d’upload
-  }
-
-  onGenererRapport() {
-    console.log('📊 Générer rapport');
-    // Appel backend génération de PDF
-  }
-
-  onResilierContrat() {
-    console.log('❌ Résilier le contrat');
-    // Appel API pour mise à jour du statut
-  }
 }

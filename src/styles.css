@@ -108,3 +108,9 @@ textarea {
 .actions button[type="button"]:hover {
   background-color: #cccccc;
 }
+
+.snackbar-error {
+  background-color: #dc3545;
+  color: white;
+  font-weight: bold;
+}

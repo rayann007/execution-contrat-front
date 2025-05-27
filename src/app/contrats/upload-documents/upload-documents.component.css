@@ -1,20 +1,19 @@
-.upload-box {
-  border: 1px dashed #011530;
-  padding: 16px;
-  text-align: right ;
-  color: #cce5ff;
-  background-color: #011530;
-  
+.upload-documents-container {
+  text-align: center;
+  margin-top: 24px;
 }
 
-.upload-button {
-  color: #29b6f6;
-  cursor: pointer;
+.upload-btn {
+  background-color: #1976d2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
   font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.file-list {
-  margin-top: 10px;
-  color: #e3f2fd;
-  font-size: 14px;
+.upload-btn:hover {
+  background-color: #1565c0;
 }

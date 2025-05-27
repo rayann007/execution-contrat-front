@@ -1,21 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { AjouterDocumentComponent } from '../../detail-contrat/actions/ajouter-document/ajouter-document.component';
 
 @Component({
   selector: 'app-upload-documents',
   templateUrl: './upload-documents.component.html',
   styleUrls: ['./upload-documents.component.css'],
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule]
 })
 export class UploadDocumentsComponent {
-  uploadedFiles: File[] = [];
+  @Input() contratId!: number;
 
-  onFileSelected(event: Event) {
-    const target = event.target as HTMLInputElement;
-    if (target.files) {
-      for (let i = 0; i < target.files.length; i++) {
-        this.uploadedFiles.push(target.files[i]);
+  constructor(private dialog: MatDialog) {}
+
+  openUploadDialog(): void {
+    const dialogRef = this.dialog.open(AjouterDocumentComponent, {
+      width: '500px',
+      data: { contratId: this.contratId }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        console.log('📥 Document ajouté avec succès via UploadDocumentsComponent');
+        // Optionnel : ajouter ici un EventEmitter si tu veux notifier le parent
       }
-    }
+    });
   }
 }

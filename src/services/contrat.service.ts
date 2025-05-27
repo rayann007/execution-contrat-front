@@ -72,5 +72,17 @@ updateContrat(id: number, contrat: Partial<Contrat>): Observable<Contrat> {
   return this.http.put<Contrat>(`${this.baseUrl}/${id}`, contrat, { headers });
 }
 
+resilierContrat(id: number): Observable<any> {
+  return this.http.put(
+    `http://localhost:8081/api/contrats/resilier-et-archiver/${id}`, 
+    null, 
+    {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('token') ?? ''}`
+      }),
+      responseType: 'text' // <- car backend renvoie String
+    }
+  );
+}
 
 }
