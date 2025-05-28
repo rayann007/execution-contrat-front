@@ -6,6 +6,7 @@ import { CreateContratComponent } from './contrats/create/create-contrat.compone
 import { ContratsComponent } from './contrats/contrats.component';
 import { SuivreContratComponent } from './suivre-contrat/suivre-contrat.component';
 import { DetailContratComponent } from './detail-contrat/detail-contrat.component';
+import { ArchiveContratComponent } from './archive-contrat/archive-contrat.component';
 
 
 
@@ -16,7 +17,8 @@ export const routes: Routes = [
   { path: 'creer-contrat', component: CreateContratComponent },
   { path: 'contrats', component: ContratsComponent },
   { path: 'suivre-contrat', component: SuivreContratComponent },
-  { path: 'contrat/:id', component: DetailContratComponent }
+  { path: 'contrat/:id', component: DetailContratComponent },
+  { path: 'archives', component: ArchiveContratComponent },
 
 
 ];

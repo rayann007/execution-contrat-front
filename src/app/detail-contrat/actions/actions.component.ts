@@ -19,7 +19,8 @@ export class ActionsComponent {
   onAjouterDocument() {
     const dialogRef = this.dialog.open(AjouterDocumentComponent, {
       width: '500px',
-      data: { contratId: this.contratId }
+      data: { contratId: this.contratId },
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {

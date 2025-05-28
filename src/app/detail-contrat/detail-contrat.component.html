@@ -16,6 +16,7 @@
       </div>
 
       <app-actions
+        *ngIf="!archiveMode"
         [contratId]="contrat.id"
         (modifier)="onModifier()"
         (genererRapport)="onGenererRapport()"
@@ -29,3 +30,5 @@
 <ng-container *ngIf="contrat">
   <app-documents [contratId]="contrat.id"></app-documents>
 </ng-container>
+
+<div *ngIf="archiveMode" class="archive-banner">🗂️ Ce contrat est archivé</div>

@@ -1,0 +1,83 @@
+.archive-wrapper {
+  padding: 32px;
+  background-color: #011530;
+  min-height: 100vh;
+  color: #f0f4f8;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.filtres {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filtres input,
+.filtres select {
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #e6e6e6;
+  color: #000;
+  height: 40px;
+}
+
+/* Largeur spécifique par champ */
+.filtres input[type="text"] {
+  flex: 1;
+  min-width: 300px;
+}
+
+.filtres select {
+  width: 180px;
+}
+
+.table-archives {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #132f4c;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.table-archives thead {
+  background-color: #183d5a;
+  color: #ffffff;
+}
+
+.table-archives th,
+.table-archives td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #2b4a67;
+}
+
+.table-archives tbody tr:hover {
+  background-color: #244768;
+}
+
+button {
+  background-color: #1e88e5;
+  border: none;
+  padding: 8px 14px;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1565c0;
+}

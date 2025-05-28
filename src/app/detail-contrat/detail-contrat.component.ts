@@ -10,18 +10,18 @@ import { CommonModule } from '@angular/common';
 import { ResilierContratComponent } from './actions/resilier-contrat/resilier-contrat.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
 @Component({
   selector: 'app-detail-contrat',
   standalone: true,
   templateUrl: './detail-contrat.component.html',
   styleUrls: ['./detail-contrat.component.css'],
-  imports: [CommonModule, DocumentsComponent, ActionsComponent ,]
+  imports: [CommonModule, DocumentsComponent, ActionsComponent]
 })
 export class DetailContratComponent implements OnInit {
   contrat!: Contrat;
 
   @ViewChild(DocumentsComponent) documentsComponent!: DocumentsComponent;
+  archiveMode: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +31,9 @@ export class DetailContratComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // 📌 Détection du mode archive
+    this.archiveMode = this.route.snapshot.queryParamMap.get('archive') === 'true';
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.contratService.getContratById(+id).subscribe({
@@ -66,7 +69,6 @@ export class DetailContratComponent implements OnInit {
   }
 
   onDocumentAjoute() {
-    console.log('📄 Mise à jour des documents...');
     if (this.documentsComponent) {
       this.documentsComponent.fetchDocuments();
     }
@@ -76,25 +78,24 @@ export class DetailContratComponent implements OnInit {
     console.log('📊 Générer rapport');
   }
 
- onResilierContrat() {
-  const dialogRef = this.dialog.open(ResilierContratComponent, {
-    disableClose: true,
-    data: { message: 'Voulez-vous vraiment résilier ce contrat ? Cette action est irréversible.' }
-  });
+  onResilierContrat() {
+    const dialogRef = this.dialog.open(ResilierContratComponent, {
+      disableClose: true,
+      data: { message: 'Voulez-vous vraiment résilier ce contrat ? Cette action est irréversible.' }
+    });
 
-  dialogRef.afterClosed().subscribe((confirmed) => {
-    if (confirmed) {
-      this.contratService.resilierContrat(this.contrat.id).subscribe({
-        next: (message) => {
-          this.contrat.statut = 'résilié';
-          this.snackBar.open(message, '✔️', { duration: 3000 });
-        },
-        error: (err) => {
-          this.snackBar.open('Erreur : ' + err.error, 'Fermer', { duration: 4000 });
-        }
-      });
-    }
-  });
-}
-
+    dialogRef.afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        this.contratService.resilierContrat(this.contrat.id).subscribe({
+          next: (message) => {
+            this.contrat.statut = 'résilié';
+            this.snackBar.open(message, '✔️', { duration: 3000 });
+          },
+          error: (err) => {
+            this.snackBar.open('Erreur : ' + err.error, 'Fermer', { duration: 4000 });
+          }
+        });
+      }
+    });
+  }
 }
