@@ -7,6 +7,7 @@ import { ContratsComponent } from './contrats/contrats.component';
 import { SuivreContratComponent } from './suivre-contrat/suivre-contrat.component';
 import { DetailContratComponent } from './detail-contrat/detail-contrat.component';
 import { ArchiveContratComponent } from './archive-contrat/archive-contrat.component';
+import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
 
 
 
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'suivre-contrat', component: SuivreContratComponent },
   { path: 'contrat/:id', component: DetailContratComponent },
   { path: 'archives', component: ArchiveContratComponent },
+    { path: 'utilisateurs', component: UtilisateursComponent },
 
 
 ];

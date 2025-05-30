@@ -1,0 +1,84 @@
+.container {
+  padding: 30px;
+  background-color: #011530;
+  color: #f0f4f8;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #0c2948;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.table thead {
+  background-color: #123456;
+  color: #ffffff;
+}
+
+.table th,
+.table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #2d4c68;
+  vertical-align: middle;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  background-color: #e6e6e6;
+  color: #222;
+}
+
+select {
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button.update {
+  background-color: #1e88e5;
+  color: white;
+}
+
+button.reset {
+  background-color: #ffa000;
+  color: white;
+}
+
+button.delete {
+  background-color: #d32f2f;
+  color: white;
+}

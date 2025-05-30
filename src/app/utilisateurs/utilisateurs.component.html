@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>👤 Gestion des utilisateurs</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Nom</th>
+        <th>Service</th>
+        <th>Rôle</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of utilisateurs">
+        <td><input [(ngModel)]="user.email" /></td>
+        <td><input [(ngModel)]="user.nom" /></td>
+        <td><input [(ngModel)]="user.serviceAffectation" /></td>
+        <td>
+          <select [(ngModel)]="user.role">
+            <option value="admin">admin</option>
+            <option value="user">user</option>
+          </select>
+        </td>
+        <td class="actions">
+          <button class="update" (click)="updateUser(user)">💾</button>
+          <button class="reset" (click)="resetPassword(user.id)">🔒</button>
+          <button class="delete" (click)="deleteUser(user.id)">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
