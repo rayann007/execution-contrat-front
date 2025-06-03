@@ -1,22 +1,21 @@
-
+<div class="create-contrat-box">
   <h2>Créer un contrat</h2>
 
   <form [formGroup]="contratForm" (ngSubmit)="onSubmit()" class="contrat-form">
 
-    <!-- Référence + Nom du contrat -->
     <div class="form-row">
       <input type="text" formControlName="nomContrat" placeholder="Nom du contrat" required />
     </div>
 
-    <!-- Type de contrat -->
     <div class="form-row type-radio">
       <label>Type de contrat :</label>
+        <div class="type-radio-inline">
       <label><input type="radio" value="Travaux" formControlName="type" /> Travaux</label>
       <label><input type="radio" value="Prestation" formControlName="type" /> Prestation</label>
       <label><input type="radio" value="Continu" formControlName="type" /> Continu</label>
+      </div>
     </div>
 
-    <!-- Prestataire + service concerné -->
     <div class="form-row">
       <input type="text" formControlName="prestataire" placeholder="Prestataire" required />
       <select formControlName="serviceConcerne" required>
@@ -25,19 +24,16 @@
       </select>
     </div>
 
-    <!-- Responsable + email -->
     <div class="form-row">
       <input type="text" formControlName="responsableLeoni" placeholder="Responsable Leoni" required />
       <input type="email" formControlName="emailResponsable" placeholder="Email responsable" required />
     </div>
 
-    <!-- Emails dédiés -->
-    <div class="form-row full-width">
+    <div class="form-row">
       <label>Emails des personnes dédiées</label>
       <textarea formControlName="emailsPersonnesDediees" rows="3" placeholder="nom1@mail.tn, nom2@mail.tn" required></textarea>
     </div>
 
-    <!-- Dates -->
     <div class="form-row">
       <div class="date-block">
         <label>Date de début</label>
@@ -49,19 +45,15 @@
       </div>
     </div>
 
-    <!-- Délais -->
     <div class="form-row add-detail-section">
-      <div class="full-width">
-        <h3>Délais contractuels</h3>
-        <button type="button" class="add-detail-btn">
-          <span>+</span> Ajouter un détail
-        </button>
-      </div>
+      <h3>Délais contractuels</h3>
+      <button type="button" class="add-detail-btn" (click)="onClickAjouterDelai()">
+        <span>+</span> Ajouter un détail
+      </button>
     </div>
 
-    <!-- Soumission -->
     <div class="form-footer">
       <button type="submit">Créer un contrat</button>
     </div>
   </form>
-
+</div>

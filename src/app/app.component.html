@@ -1,11 +1,13 @@
-<app-navbar>
+<app-navbar *ngIf="!isLoginRoute()">
   <div class="main-layout">
     <app-header></app-header>
-
     <div class="main-content">
       <router-outlet></router-outlet>
     </div>
-
     <app-footer></app-footer>
   </div>
 </app-navbar>
+
+<ng-container *ngIf="isLoginRoute()">
+  <router-outlet></router-outlet>
+</ng-container>

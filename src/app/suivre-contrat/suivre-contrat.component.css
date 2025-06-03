@@ -1,12 +1,16 @@
 .contrats-wrapper {
-  padding: 20px;
   background-color: #011530;
   color: white;
   min-height: 100vh;
-  
-  
-}
+    padding: 30px;
 
+}
+h2{
+    font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
 .contrats-filtres {
   display: flex;
   gap: 16px;
@@ -62,15 +66,31 @@ button {
   margin-bottom: 4px;
 }
 
-.filters {
+.filtres {
   display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.filters input,
-.filters select {
-  padding: 8px;
+.filtres input,
+.filtres select {
+  padding: 10px 14px;
+  font-size: 14px;
   border-radius: 6px;
   border: none;
+  background-color: #e6e6e6;
+  color: #000;
+  height: 40px;
+}
+
+/* Largeur spécifique par champ */
+.filtres input[type="text"] {
+  flex: 1;
+  min-width: 300px;
+}
+
+.filtres select {
+  width: 180px;
 }

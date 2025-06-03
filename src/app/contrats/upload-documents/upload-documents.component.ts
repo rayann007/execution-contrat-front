@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AjouterDocumentComponent } from '../../detail-contrat/actions/ajouter-document/ajouter-document.component';
+import { DocumentService } from '../../../services/document.service';
 
 @Component({
   selector: 'app-upload-documents',
@@ -13,19 +14,38 @@ import { AjouterDocumentComponent } from '../../detail-contrat/actions/ajouter-d
 export class UploadDocumentsComponent {
   @Input() contratId!: number;
 
-  constructor(private dialog: MatDialog) {}
+  selectedFile: File | null = null;
 
-  openUploadDialog(): void {
-    const dialogRef = this.dialog.open(AjouterDocumentComponent, {
-      width: '500px',
-      data: { contratId: this.contratId }
-    });
+  constructor(
+    public dialogRef: MatDialogRef<AjouterDocumentComponent>,
+    private documentService: DocumentService,
+    @Inject(MAT_DIALOG_DATA) public data: { contratId: number }
+  ) {}
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === true) {
-        console.log('📥 Document ajouté avec succès via UploadDocumentsComponent');
-        // Optionnel : ajouter ici un EventEmitter si tu veux notifier le parent
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
+  }
+
+  onSubmit(): void {
+     console.log("✅ test");
+    if (!this.selectedFile) return;
+
+    this.documentService.uploadDocument(this.data.contratId, this.selectedFile).subscribe({
+      next: () => {
+        console.log("✅ Upload terminé");
+        this.dialogRef.close(true); // Notifie le parent du succès
+      },
+      error: (err: any) => {
+        console.error('❌ Erreur upload fichier :', err);
+        this.dialogRef.close(false); // En cas d'erreur
       }
     });
+  }
+
+  onCancel(): void {
+    this.dialogRef.close(false);
   }
 }

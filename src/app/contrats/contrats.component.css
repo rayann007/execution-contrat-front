@@ -1,5 +1,5 @@
 .contrats-wrapper {
-  padding: 24px;
+
   background-color: #011530;
   min-height: 100vh;
   color: white;
@@ -8,50 +8,31 @@
   gap: 20px;
 }
 
-/* Ligne contenant les 2 formulaires */
+/* Zone verticale contenant les 2 composants */
 .contrat-delai-line {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* ✅ empile verticalement */
   gap: 24px;
-  flex-wrap: wrap;
 }
 
-/* Les composants prennent chacun 50% (ajustable) */
+/* Les deux composants prennent 100% */
 app-create-contrat,
 app-add-delai {
-  flex: 1;
-  min-width: 400px;
-  max-width: 48%;
-
-  padding: 16px;
+  width: 60% !important;     /* ✅ force la pleine largeur */
+  max-width: 60% !important;
+  background-color: #011530;;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Upload centré ou aligné à droite en bas */
+/* Zone upload alignée à droite en bas */
 .upload-zone {
   margin-top: auto;
   display: flex;
-  justify-content: flex-end; /* ou center */
-  
+  justify-content: flex-end;
   padding: 12px 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 
-.contrat-delai-line {
-  display: flex;
-  gap: 24px;
-  justify-content: space-between;
-}
-
-app-create-contrat,
-app-add-delai {
-  flex: 1;
-  padding: 24px;
-  background-color: #062c4f;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  min-width: 420px;
-}

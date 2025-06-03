@@ -1,33 +1,42 @@
 .add-delai-form {
-  background-color: #011530;
-  padding: 24px;
-  color: white;
-  margin: auto;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+ display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding: 16px;
 }
-
+.add-delai-box {
+  background-color: transparent;
+  color: #e2e8f0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 30px;
+  box-sizing: border-box;
+}
 label {
   display: block;
-  margin-top: 12px;
+  margin-top: 6px;
   font-weight: bold;
-  color: #90cdf4;
+  color: #e2e8f0;;
   font-size: 14px;
-  margin:6px;
 }
-
+h2{
+      font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #ffffff;
+}
 input, textarea {
   width: 100%;
   padding: 8px;
   border-radius: 6px;
   border: none;
-  margin-top: 4px;
-  margin-bottom: 4px;
 }
 
 .checkboxes {
   display: flex;
   gap: 24px;
-  margin-top: 12px;
 }
 
 button[type="submit"] {

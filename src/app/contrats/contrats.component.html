@@ -1,12 +1,17 @@
 <div class="contrats-wrapper">
-
   <div class="contrat-delai-line">
-    <app-create-contrat></app-create-contrat>
-    <app-add-delai></app-add-delai>
+    <app-create-contrat (contratCreated)="handleContratCreated($event)" (showDelai)="toggleDelai()"></app-create-contrat>
+
+<app-add-delai *ngIf="isDelaiVisible && contratId" [contratId]="contratId"></app-add-delai>
+
+
   </div>
 
   <div class="upload-zone">
-    <app-upload-documents ></app-upload-documents>
+    <div class="upload-zone">
+  <button mat-raised-button color="primary" (click)="openUploadDialog()">
+    Upload Documents
+  </button>
+</div>
   </div>
-
 </div>

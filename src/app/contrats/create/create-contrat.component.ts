@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
+// Angular Material Modules
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -12,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 
+// Service
 import { ContratService } from '../../../services/contrat.service';
 
 @Component({
@@ -36,6 +38,10 @@ export class CreateContratComponent implements OnInit {
   contratForm!: FormGroup;
   services = ['RH', 'Finance', 'Logistique', 'IT', 'Batiment'];
 
+  // Événements vers le parent
+  @Output() showDelai = new EventEmitter<void>();
+  @Output() contratCreated = new EventEmitter<number>();
+
   constructor(
     private fb: FormBuilder,
     private contratService: ContratService,
@@ -45,7 +51,6 @@ export class CreateContratComponent implements OnInit {
 
   ngOnInit(): void {
     this.contratForm = this.fb.group({
-      reference: ['', Validators.required],
       nomContrat: ['', Validators.required],
       type: ['Travaux', Validators.required],
       prestataire: ['', Validators.required],
@@ -58,14 +63,26 @@ export class CreateContratComponent implements OnInit {
     });
   }
 
+  // Lors du clic sur le bouton "Ajouter un délai"
+  onClickAjouterDelai() {
+    this.showDelai.emit();
+  }
+
+  // Lors de la soumission du formulaire
   onSubmit(): void {
     if (this.contratForm.valid) {
       this.contratService.createContrat(this.contratForm.value).subscribe({
-        next: () => {
+        next: (response: any) => {
+          const createdId = response?.id;
+          if (createdId) {
+            this.contratCreated.emit(createdId); // ✅ envoie l'id au parent
+          }
+
           this.snackBar.open('✅ Contrat créé avec succès !', 'Fermer', {
             duration: 3000,
             panelClass: ['snackbar-success']
           });
+
           this.router.navigate(['/contrats']);
         },
         error: (err: any) => {

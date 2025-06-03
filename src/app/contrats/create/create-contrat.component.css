@@ -1,55 +1,53 @@
 .create-contrat-box {
-  background-color: #011530;
-  color: white;
-  padding: 32px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  width: 100%; /* Changed from max-width */
-  box-sizing: border-box; /* Includes padding in width calculation */
-  font-family: 'Segoe UI', sans-serif;
+  background-color: transparent;
+  color: #e2e8f0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 30px;
+  box-sizing: border-box;
 }
 
 .create-contrat-box h2 {
-  font-size: 26px;
-  margin-bottom: 24px;
-  text-align: center;
-  color: #ffffff;
-  font-weight: bold;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #ffffff;
 }
 
 .contrat-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  padding: 16px;
 }
 
 .form-row {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.full-width {
   flex-direction: column;
+  gap: 12px;
+  width: 100%;
 }
 
 .form-row label {
   font-weight: 600;
   font-size: 14px;
-  color: #8ecafc;
-  margin-bottom: 6px;
+  color: #e2e8f0;
   display: block;
 }
 
 .form-row input,
 .form-row select,
 .form-row textarea {
-  flex: 1;
+  width: 100%;
   padding: 12px;
   border-radius: 10px;
   border: none;
   font-size: 15px;
   background-color: #f9f9f9;
   color: #333;
+  box-sizing: border-box;
   transition: box-shadow 0.3s ease;
 }
 
@@ -67,27 +65,18 @@ textarea {
 }
 
 .type-radio {
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 6px;
-}
-
-.type-radio label {
-  margin-right: 20px;
-  font-size: 14px;
-  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .date-block {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  width: 100%;
 }
 
 .date-block label {
   font-size: 14px;
-  color: #8ecafc;
-  margin-bottom: 6px;
+  color: #e2e8f0;
   font-weight: 600;
 }
 
@@ -103,7 +92,6 @@ input[type="date"] {
 .form-footer {
   display: flex;
   justify-content: flex-end;
-  margin-top: 28px;
 }
 
 button[type="submit"] {
@@ -124,8 +112,7 @@ button[type="submit"]:hover {
 
 .add-detail-section h3 {
   font-size: 16px;
-  color: #8ecafc;
-  margin-bottom: 12px;
+  color: #e2e8f0;
   font-weight: 600;
 }
 
@@ -151,4 +138,18 @@ button[type="submit"]:hover {
 
 .add-detail-btn:hover {
   background-color: #1565c0;
+}
+.type-radio-inline {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.type-radio-inline label {
+  font-size: 14px;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }

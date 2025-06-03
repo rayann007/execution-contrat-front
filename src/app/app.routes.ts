@@ -15,7 +15,6 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardAdminComponent },
-  { path: 'creer-contrat', component: CreateContratComponent },
   { path: 'contrats', component: ContratsComponent },
   { path: 'suivre-contrat', component: SuivreContratComponent },
   { path: 'contrat/:id', component: DetailContratComponent },
