@@ -96,3 +96,40 @@ button.danger {
 button.danger:hover {
   background-color: #b71c1c;
 }
+.delais-section {
+  margin-top: 24px;
+  background-color: #0a2c50;
+  padding: 16px;
+  border-radius: 8px;
+  color: #e3f2fd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.delais-section h4 {
+  margin-bottom: 16px;
+  font-size: 18px;
+  border-bottom: 1px solid #1e4e74;
+  padding-bottom: 6px;
+  color: #90caf9;
+}
+
+.delai-card {
+  border: 1px solid #1e4e74;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  background-color: #072342;
+}
+
+.delai-date {
+  font-weight: bold;
+  color: #64b5f6;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.delai-details p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #cfd8dc;
+}

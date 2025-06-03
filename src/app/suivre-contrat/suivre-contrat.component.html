@@ -3,7 +3,7 @@
 
   <div class="contrats-filtres">
     <input type="text" [(ngModel)]="searchText" placeholder="Nom du contrat" />
-    
+
     <select [(ngModel)]="selectedType">
       <option value="">Tous types</option>
       <option value="Travaux">Travaux</option>
@@ -42,7 +42,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let contrat of contratsFiltres()">
+      <tr  *ngFor="let contrat of contratsFiltres()" >
         <td>{{ contrat.nomContrat }}</td>
         <td>{{ contrat.type }}</td>
         <td>{{ contrat.dateDebut | date: 'dd/MM/yyyy' }} - {{ contrat.dateFin | date: 'dd/MM/yyyy' }}</td>
@@ -50,5 +50,5 @@
       </tr>
     </tbody>
   </table>
-  
+
 </div>

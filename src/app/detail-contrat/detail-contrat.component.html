@@ -9,10 +9,44 @@
         <p><strong>Type</strong> : {{ contrat.type }}</p>
         <p><strong>Nom</strong> : {{ contrat.nomContrat }}</p>
         <p><strong>Statut</strong> : {{ contrat.statut }}</p>
-        <p><strong>Dates</strong> : {{ contrat.dateDebut }} → {{ contrat.dateFin }}</p>
-        <p><strong>Prestataire</strong> : {{ contrat.prestataire || '-' }}</p>
+        <p>
+          <strong>Dates</strong> : {{ contrat.dateDebut }} →
+          {{ contrat.dateFin }}
+        </p>
+<p><strong>Prestataire</strong> : {{ contrat.prestataire}}</p>
         <p><strong>Responsable</strong> : {{ contrat.responsableLeoni }}</p>
-        <p><strong>Emails associés</strong> : {{ contrat.emailsPersonnesDediees }}</p>
+        <p>
+          <strong>Emails associés</strong> :
+          {{ contrat.emailsPersonnesDediees }}
+        </p>
+        <div class="delais-section" *ngIf="delais.length > 0">
+          <h4>📅 Délais contractuels</h4>
+          <div class="delai-card" *ngFor="let d of delais">
+            <div class="delai-date">
+              <strong>{{ d.date }}</strong>
+            </div>
+            <div class="delai-details">
+              <p><strong>Retard :</strong> {{ d.joursRetard }} jour(s)</p>
+              <p>
+                <strong>Pénalité / jour :</strong>
+                {{ d.montantPenaliteJournalier }} DT
+              </p>
+              <p><strong>Commentaire :</strong> {{ d.commentaire || "—" }}</p>
+              <p>
+                <strong>Délai respecté :</strong>
+                {{ d.respecteDelai ? "✔️ Oui" : "❌ Non" }}
+              </p>
+              <p>
+                <strong>Pénalité payée :</strong>
+                {{ d.penalitePayee ? "✔️ Oui" : "❌ Non" }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="delais.length === 0" class="delais-section">
+          <em>Aucun délai contractuel enregistré.</em>
+        </div>
       </div>
 
       <app-actions

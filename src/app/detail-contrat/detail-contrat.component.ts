@@ -9,13 +9,17 @@ import { ModifierContratComponent } from './actions/modifier-contrat/modifier-co
 import { CommonModule } from '@angular/common';
 import { ResilierContratComponent } from './actions/resilier-contrat/resilier-contrat.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  DelaiContractuelService,
+  DelaiContractuel,
+} from '../../services/delai-contractuel.service';
 
 @Component({
   selector: 'app-detail-contrat',
   standalone: true,
   templateUrl: './detail-contrat.component.html',
   styleUrls: ['./detail-contrat.component.css'],
-  imports: [CommonModule, DocumentsComponent, ActionsComponent]
+  imports: [CommonModule, DocumentsComponent, ActionsComponent],
 })
 export class DetailContratComponent implements OnInit {
   contrat!: Contrat;
@@ -24,15 +28,18 @@ export class DetailContratComponent implements OnInit {
   archiveMode: boolean = false;
 
   constructor(
+    private delaiService: DelaiContractuelService,
     private route: ActivatedRoute,
     private contratService: ContratService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {}
+  delais: DelaiContractuel[] = [];
 
   ngOnInit(): void {
     // 📌 Détection du mode archive
-    this.archiveMode = this.route.snapshot.queryParamMap.get('archive') === 'true';
+    this.archiveMode =
+      this.route.snapshot.queryParamMap.get('archive') === 'true';
 
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -40,8 +47,15 @@ export class DetailContratComponent implements OnInit {
         next: (data) => {
           this.contrat = data;
           console.log('✅ Contrat récupéré :', data);
+          this.delaiService.getDelaisByContrat(data.id).subscribe({
+            next: (delais) => {
+              this.delais = delais;
+              console.log('✅ Délais récupérés :', delais);
+            },
+            error: (err) => console.error('❌ Erreur chargement délais', err),
+          });
         },
-        error: (err) => console.error('❌ Erreur chargement contrat', err)
+        error: (err) => console.error('❌ Erreur chargement contrat', err),
       });
     }
   }
@@ -52,7 +66,7 @@ export class DetailContratComponent implements OnInit {
       width: '600px',
       panelClass: 'dialog-centered',
       data: this.contrat,
-      autoFocus: false
+      autoFocus: false,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -62,7 +76,7 @@ export class DetailContratComponent implements OnInit {
             this.contrat = updated;
             console.log('✅ Contrat mis à jour');
           },
-          error: (err) => console.error('❌ Erreur maj', err)
+          error: (err) => console.error('❌ Erreur maj', err),
         });
       }
     });
@@ -81,7 +95,10 @@ export class DetailContratComponent implements OnInit {
   onResilierContrat() {
     const dialogRef = this.dialog.open(ResilierContratComponent, {
       disableClose: true,
-      data: { message: 'Voulez-vous vraiment résilier ce contrat ? Cette action est irréversible.' }
+      data: {
+        message:
+          'Voulez-vous vraiment résilier ce contrat ? Cette action est irréversible.',
+      },
     });
 
     dialogRef.afterClosed().subscribe((confirmed) => {
@@ -92,8 +109,10 @@ export class DetailContratComponent implements OnInit {
             this.snackBar.open(message, '✔️', { duration: 3000 });
           },
           error: (err) => {
-            this.snackBar.open('Erreur : ' + err.error, 'Fermer', { duration: 4000 });
-          }
+            this.snackBar.open('Erreur : ' + err.error, 'Fermer', {
+              duration: 4000,
+            });
+          },
         });
       }
     });

@@ -11,30 +11,35 @@ import { DelaiContractuelService } from '../../../services/delai-contractuel.ser
   styleUrls: ['./add-delai.component.css']
 })
 export class AddDelaiComponent {
-  @Input() contratId!: number; // ✅ Reçoit l’ID depuis le parent
+  @Input() contratId!: number;
+
+  date = '';
+  joursRetard = 0;
+  montantPenaliteJournalier = 0;
+  commentaire = '';
+  respecteDelai = true;
+  penalitePayee = true;
 
   constructor(private delaiService: DelaiContractuelService) {}
 
-  delai = {
-    date: '',
-    joursRetard: 0,
-    montantPenaliteJournalier: 0,
-    commentaire: '',
-    respecteDelai: true,
-    penalitePayee: true,
-    contrat_id: 0             // ✅ Propriété ajoutée ici
-  };
-
   enregistrer() {
-    this.delai.contrat_id = this.contratId;
+    const delai = {
+      date: this.date,
+      joursRetard: this.joursRetard,
+      montantPenaliteJournalier: this.montantPenaliteJournalier,
+      commentaire: this.commentaire,
+      respecteDelai: this.respecteDelai,
+      penalitePayee: this.penalitePayee,
+      contrat_id: this.contratId // ✅ ici garanti bon
+    };
 
-    this.delaiService.ajouterDelai(this.delai).subscribe({
+    this.delaiService.ajouterDelai(delai).subscribe({
       next: res => {
         console.log('✅ Délai enregistré :', res);
         alert('Délai ajouté avec succès !');
       },
       error: err => {
-        console.error('❌ Erreur lors de l\'enregistrement du délai', err);
+        console.error('❌ Erreur lors de l\'ajout', err);
         alert('Erreur lors de l\'ajout');
       }
     });

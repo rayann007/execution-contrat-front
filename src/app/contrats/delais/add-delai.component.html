@@ -1,21 +1,21 @@
 <div class="add-delai-box">
   <h2>Ajouter un délai contractuel</h2>
 
-  <form (ngSubmit)="enregistrer()">
-    <label>Date :</label>
-    <input type="date" [(ngModel)]="delai.date" name="date" required />
+  <form (ngSubmit)="enregistrer()" #delaiForm="ngForm">
+
+    <label for="date">Date :</label>
+    <input type="date" id="date" [(ngModel)]="date" name="date" required />
+
+    <label for="joursRetard">Jours de retard :</label>
+    <input type="number" id="joursRetard" [(ngModel)]="joursRetard" name="joursRetard" required />
+
+    <label for="montantPenalite">Pénalité journalière (DT) :</label>
+    <input type="number" id="montantPenalite" [(ngModel)]="montantPenaliteJournalier" name="montantPenaliteJournalier" required />
+
+    <label for="commentaire">Commentaire :</label>
+    <textarea id="commentaire" [(ngModel)]="commentaire" name="commentaire"></textarea>
 
 
-
-    <label>Pénalité journalière :</label>
-    <input type="number" [(ngModel)]="delai.montantPenaliteJournalier" name="montantPenaliteJournalier" required />
-
-    <label>Commentaire :</label>
-    <textarea [(ngModel)]="delai.commentaire" name="commentaire"></textarea>
-
-
-
-    <button type="submit">Enregistrer</button>
+    <button type="submit" [disabled]="!delaiForm.form.valid">Enregistrer</button>
   </form>
 </div>
-
