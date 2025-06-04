@@ -1,65 +1,168 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-interface Utilisateur {
-  id: number;
-  email: string;
-  nom: string;
-  serviceAffectation: string;
-  role: 'admin' | 'user';
-}
+import { UtilisateurService, Utilisateur } from '../../services/utilisateur.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ComponentType } from '@angular/cdk/portal';
+import { ResetPasswordDialogComponent } from './reset-password-dialog/reset-password-dialog.component';
 
 @Component({
   selector: 'app-utilisateurs',
   templateUrl: './utilisateurs.component.html',
   styleUrls: ['./utilisateurs.component.css'],
   standalone: true,
-   imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatSnackBarModule, MatDialogModule, ReactiveFormsModule],
 })
 export class UtilisateursComponent implements OnInit {
   utilisateurs: Utilisateur[] = [];
-  baseUrl = 'http://localhost:8081/api/utilisateurs';
+  utilisateursOriginal: Utilisateur[] = [];
 
-  constructor(private http: HttpClient) {}
+  ligneModifiee: { [id: number]: boolean } = {};
+  ligneEnregistree: { [id: number]: boolean } = {};
+
+  nouvelUtilisateur: Partial<Utilisateur> = {
+    email: '',
+    nom: '',
+    serviceAffectation: '',
+    motDePasse: '',
+    role: 'user'
+  };
+
+  ajoutEnCours = false;
+
+  constructor(
+    private utilisateurService: UtilisateurService,
+    private snackBar: MatSnackBar,
+    private fb: FormBuilder,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.loadUsers();
   }
 
-  loadUsers() {
-    this.http.get<Utilisateur[]>(this.baseUrl).subscribe({
-      next: data => this.utilisateurs = data,
-      error: err => console.error('Erreur chargement utilisateurs', err)
+  loadUsers(): void {
+    this.utilisateurService.listerTous().subscribe({
+      next: (data) => {
+        this.utilisateurs = data;
+        this.utilisateursOriginal = JSON.parse(JSON.stringify(data));
+      },
+      error: (err) => console.error('Erreur chargement utilisateurs', err),
     });
   }
 
-  updateUser(user: Utilisateur) {
-    this.http.put(`${this.baseUrl}/${user.id}`, user).subscribe({
-      next: () => alert('✅ Utilisateur mis à jour'),
-      error: () => alert('❌ Erreur lors de la mise à jour')
+  ajouterUtilisateur(): void {
+    if (!this.nouvelUtilisateur.email || !this.nouvelUtilisateur.nom || !this.nouvelUtilisateur.motDePasse) {
+      this.snackBar.open('Veuillez remplir tous les champs requis.', 'Fermer', {
+        duration: 3000,
+        panelClass: ['snackbar-error']
+      });
+      return;
+    }
+
+    this.ajoutEnCours = true;
+
+    this.utilisateurService.ajouter(this.nouvelUtilisateur).subscribe({
+      next: (utilisateurAjoute) => {
+        this.utilisateurs.push(utilisateurAjoute);
+        this.utilisateursOriginal.push({ ...utilisateurAjoute });
+        this.nouvelUtilisateur = {
+          email: '',
+          nom: '',
+          serviceAffectation: '',
+          motDePasse: '',
+          role: 'user'
+        };
+        this.snackBar.open('✅ Utilisateur ajouté avec succès', 'OK', {
+          duration: 3000,
+          panelClass: ['snackbar-success']
+        });
+        this.ajoutEnCours = false;
+      },
+      error: (err) => {
+        console.error('Erreur ajout utilisateur', err);
+        this.snackBar.open('❌ Erreur lors de l’ajout', 'Fermer', {
+          duration: 3000,
+          panelClass: ['snackbar-error']
+        });
+        this.ajoutEnCours = false;
+      }
     });
   }
 
-  deleteUser(id: number) {
-    if (confirm('❗ Supprimer cet utilisateur ?')) {
-      this.http.delete(`${this.baseUrl}/${id}`).subscribe({
+  isModified(user: Utilisateur): boolean {
+    const original = this.utilisateursOriginal.find(u => u.id === user.id);
+    if (!original) return false;
+    return (
+      user.email !== original.email ||
+      user.nom !== original.nom ||
+      user.serviceAffectation !== original.serviceAffectation ||
+      user.role !== original.role
+    );
+  }
+
+  updateUser(user: Utilisateur): void {
+    if (!this.isModified(user)) return;
+
+    this.utilisateurService.modifier(user.id, user).subscribe({
+      next: () => {
+        const index = this.utilisateursOriginal.findIndex(u => u.id === user.id);
+        if (index !== -1) {
+          this.utilisateursOriginal[index] = { ...user };
+        }
+
+        this.snackBar.open('✅ Utilisateur modifié avec succès', 'OK', {
+          duration: 3000,
+          panelClass: ['snackbar-success']
+        });
+
+        this.ligneEnregistree[user.id] = true;
+        setTimeout(() => this.ligneEnregistree[user.id] = false, 2000);
+      },
+      error: (err) => {
+        console.error('Erreur modification', err);
+        this.snackBar.open('❌ Erreur lors de la modification', 'Fermer', {
+          duration: 3000,
+          panelClass: ['snackbar-error']
+        });
+      }
+    });
+  }
+
+  deleteUser(id: number): void {
+    if (confirm('Supprimer cet utilisateur ?')) {
+      this.utilisateurService.supprimer(id).subscribe({
         next: () => {
           this.utilisateurs = this.utilisateurs.filter(u => u.id !== id);
-          alert('✅ Utilisateur supprimé');
+          this.utilisateursOriginal = this.utilisateursOriginal.filter(u => u.id !== id);
+          console.log('Utilisateur supprimé');
         },
-        error: () => alert('❌ Erreur suppression')
+        error: (err) => console.error('Erreur suppression', err),
       });
     }
   }
 
-  resetPassword(id: number) {
-    if (confirm('Réinitialiser le mot de passe ?')) {
-      this.http.put(`${this.baseUrl}/${id}/reset-password`, null).subscribe({
-        next: () => alert('🔒 Mot de passe réinitialisé'),
-        error: () => alert('❌ Erreur réinitialisation')
+resetPassword(userId: number): void {
+  const dialogRef = this.dialog.open(ResetPasswordDialogComponent, {
+    width: '400px',
+    data: { userId }
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+    if (result) {
+      this.utilisateurService.resetPassword(userId).subscribe({
+        next: () => {
+          this.snackBar.open('✅ Mot de passe réinitialisé', 'OK', { duration: 3000, panelClass: ['snackbar-success'] });
+        },
+        error: (err) => {
+          console.error('Erreur reset', err);
+          this.snackBar.open('❌ Erreur lors de la réinitialisation', 'Fermer', { duration: 3000, panelClass: ['snackbar-error'] });
+        }
       });
     }
-  }
+  });
+}
 }

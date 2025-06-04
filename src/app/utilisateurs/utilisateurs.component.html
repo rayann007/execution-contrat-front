@@ -1,6 +1,50 @@
 <div class="container">
   <h2>Gestion des utilisateurs</h2>
 
+  <div class="form-ajout">
+    <h3>Ajouter un utilisateur</h3>
+
+    <form (ngSubmit)="ajouterUtilisateur()" #ajoutForm="ngForm">
+      <input
+        [(ngModel)]="nouvelUtilisateur.email"
+        name="email"
+        placeholder="Email"
+        required
+      />
+      <input
+        [(ngModel)]="nouvelUtilisateur.nom"
+        name="nom"
+        placeholder="Nom"
+        required
+      />
+      <input
+        [(ngModel)]="nouvelUtilisateur.serviceAffectation"
+        name="serviceAffectation"
+        placeholder="Service"
+      />
+      <input
+        [(ngModel)]="nouvelUtilisateur.motDePasse"
+        name="motDePasse"
+        type="password"
+        placeholder="Mot de passe"
+        required
+      />
+      <select
+        [(ngModel)]="nouvelUtilisateur.role"
+        name="role"
+        required
+      >
+        <option value="" disabled>Rôle</option>
+        <option value="admin">admin</option>
+        <option value="user">user</option>
+      </select>
+
+      <button type="submit" [disabled]="ajoutEnCours || ajoutForm.invalid">
+        {{ ajoutEnCours ? 'Ajout en cours...' : '➕ Ajouter' }}
+      </button>
+    </form>
+  </div>
+
   <table class="table">
     <thead>
       <tr>
@@ -12,20 +56,52 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of utilisateurs">
-        <td><input [(ngModel)]="user.email" /></td>
-        <td><input [(ngModel)]="user.nom" /></td>
-        <td><input [(ngModel)]="user.serviceAffectation" /></td>
+      <tr *ngFor="let user of utilisateurs; let i = index">
         <td>
-          <select [(ngModel)]="user.role">
+          <input
+            [(ngModel)]="user.email"
+            name="email{{i}}"
+            (ngModelChange)="ligneModifiee[user.id] = isModified(user)"
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="user.nom"
+            name="nom{{i}}"
+            (ngModelChange)="ligneModifiee[user.id] = isModified(user)"
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="user.serviceAffectation"
+            name="serviceAffectation{{i}}"
+            (ngModelChange)="ligneModifiee[user.id] = isModified(user)"
+          />
+        </td>
+        <td>
+          <select
+            [(ngModel)]="user.role"
+            name="role{{i}}"
+            (ngModelChange)="ligneModifiee[user.id] = isModified(user)"
+          >
             <option value="admin">admin</option>
             <option value="user">user</option>
           </select>
         </td>
         <td class="actions">
-          <button class="update" (click)="updateUser(user)">💾</button>
-          <button class="reset" (click)="resetPassword(user.id)">🔒</button>
-          <button class="delete" (click)="deleteUser(user.id)">🗑️</button>
+          <button
+            class="update"
+            (click)="updateUser(user)"
+            [disabled]="!isModified(user)"
+          >
+            💾 Modifier
+          </button>
+          <button class="Réinitialiser mot de passe" (click)="resetPassword(user.id)">
+            🔒 Reset
+          </button>
+          <button class="delete" (click)="deleteUser(user.id)">
+            🗑️ Supprimer
+          </button>
         </td>
       </tr>
     </tbody>

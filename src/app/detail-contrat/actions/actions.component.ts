@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AjouterDocumentComponent } from './ajouter-document/ajouter-document.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-actions',
   templateUrl: './actions.component.html',
-  styleUrls: ['./actions.component.css']
+  styleUrls: ['./actions.component.css'],
 })
 export class ActionsComponent {
   @Input() contratId!: number;
@@ -14,16 +15,16 @@ export class ActionsComponent {
   @Output() resilierContrat = new EventEmitter<void>();
   @Output() documentAjoute = new EventEmitter<void>(); // 🔁 pour rechargement
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private router: Router) {}
 
   onAjouterDocument() {
     const dialogRef = this.dialog.open(AjouterDocumentComponent, {
       width: '500px',
       data: { contratId: this.contratId },
-      disableClose: true
+      disableClose: true,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         this.documentAjoute.emit(); // ✅ notify parent
       }
@@ -31,9 +32,8 @@ export class ActionsComponent {
   }
 
   onModifier() {
-    this.modifier.emit();
+    this.router.navigate(['/modifier-contrat', this.contratId]);
   }
-
   onGenererRapport() {
     this.genererRapport.emit();
   }

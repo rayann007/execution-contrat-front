@@ -1,14 +1,25 @@
+export enum TypeContrat {
+  Travaux = 'Travaux',
+  Prestation = 'Prestation',
+  Continu = 'Continu'
+}
+
+export enum StatutContrat {
+  EnCours = 'en_cours',
+  Terminé = 'terminé',
+  Résilié = 'résilié'
+}
+
 export interface Contrat {
-  prestataire: string;
   id: number;
   nomContrat: string;
-  type: string;
+  type: TypeContrat;
+  statut: StatutContrat;
   dateDebut: string;
   dateFin: string;
-  statut: string;
   serviceConcerne: string;
   responsableLeoni: string;
   emailResponsable: string;
   emailsPersonnesDediees: string;
-
+  prestataire: string;
 }

@@ -1,44 +1,70 @@
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Contrat } from '../../../models/contrat.model';
-
+import { ContratService } from '../../../../services/contrat.service';
 
 @Component({
   selector: 'app-modifier-contrat',
-  standalone: true,
-  imports: [CommonModule, MatDialogModule, ReactiveFormsModule],
   templateUrl: './modifier-contrat.component.html',
-   styleUrls: ['./modifier-contrat.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  imports: [ReactiveFormsModule],
+  styleUrls: ['./modifier-contrat.component.css'],
 })
-export class ModifierContratComponent {
+export class ModifierContratComponent implements OnInit {
   form: FormGroup;
+  contratId!: number;
 
   constructor(
-    public dialogRef: MatDialogRef<ModifierContratComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Contrat,
-    private fb: FormBuilder
+    private route: ActivatedRoute,
+    private router: Router,
+    private fb: FormBuilder,
+    private contratService: ContratService
   ) {
     this.form = this.fb.group({
-      nomContrat: [data.nomContrat],
-      type: [data.type],
-      statut: [data.statut],
-      dateDebut: [data.dateDebut],
-      dateFin: [data.dateFin],
-      prestataire: [data.prestataire],
-      responsableLeoni: [data.responsableLeoni],
-      emailsPersonnesDediees: [data.emailsPersonnesDediees]
+      nomContrat: [''],
+      type: [''],
+      statut: [''],
+      dateDebut: [''],
+      dateFin: [''],
+      prestataire: [''],
+      responsableLeoni: [''],
+      emailsPersonnesDediees: ['']
+    });
+  }
+
+  ngOnInit(): void {
+    this.contratId = +this.route.snapshot.paramMap.get('id')!;
+    this.contratService.getContratById(this.contratId).subscribe({
+      next: (contrat: Contrat) => {
+        if (contrat) {
+          this.form.patchValue(contrat);
+        } else {
+          console.warn('Contrat non trouvé');
+        }
+      },
+      error: err => {
+        console.error('Erreur lors du chargement du contrat', err);
+      }
     });
   }
 
   valider() {
-    this.dialogRef.close(this.form.value);
-    
+    if (this.form.valid) {
+      this.contratService.updateContrat(this.contratId, this.form.value).subscribe({
+        next: () => {
+          console.log('Contrat modifié avec succès');
+          this.router.navigate(['/contrat', this.contratId]); // Redirection propre
+        },
+        error: err => {
+          console.error('Erreur lors de la modification', err);
+        }
+      });
+    } else {
+      console.warn('Formulaire invalide', this.form.value);
+    }
   }
 
   annuler() {
-    this.dialogRef.close();
+    this.router.navigate(['/contrats',, this.contratId]);
   }
 }

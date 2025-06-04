@@ -13,6 +13,48 @@ h2 {
   color: #ffffff;
 }
 
+.form-ajout {
+  margin-bottom: 20px;
+  padding-left: 16px;
+  padding-top: 6px;
+  background-color: #2d4c68;
+  border-radius: 8px;
+}
+
+.form-ajout h3 {
+  margin-bottom: 6px;
+  color: #f0f4f8;;
+}
+
+.form-ajout form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-ajout input,
+.form-ajout select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  flex: 1 1 50px;
+}
+
+.form-ajout button {
+  padding: 8px 16px;
+  background-color: #3ab0f9;;
+  border: none;
+  color: #f0f4f8;;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.form-ajout button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -81,4 +123,20 @@ button.reset {
 button.delete {
   background-color: #d32f2f;
   color: white;
+}
+.feedback-msg {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
 }

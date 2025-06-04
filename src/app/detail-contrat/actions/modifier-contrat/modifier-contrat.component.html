@@ -1,33 +1,58 @@
-<h2>Modifier le contrat</h2>
+<div class="modifier-contrat-box">
+  <h2>Modifier le contrat</h2>
 
-<form [formGroup]="form" (ngSubmit)="valider()">
-  <label>Nom :</label>
-  <input formControlName="nomContrat" type="text" />
+  <form [formGroup]="form" (ngSubmit)="valider()" class="contrat-form">
+    <div class="form-row">
+      <label>Nom :</label>
+      <input formControlName="nomContrat" type="text" />
+    </div>
 
-  <label>Type :</label>
-  <input formControlName="type" type="text" />
+    <div class="form-row">
+      <label>Type :</label>
+      <select formControlName="type">
+        <option [value]="'Travaux'">Travaux</option>
+        <option [value]="'Prestation'">Prestation</option>
+        <option [value]="'Continu'">Continu</option>
+      </select>
+    </div>
 
-  <label>Statut :</label>
-<input formControlName="statut" type="text" readonly style="background-color: #e0e0e0; color: #666;" />
+    <div class="form-row">
+      <label>Statut :</label>
+      <select formControlName="statut">
+        <option [value]="'en_cours'">En cours</option>
+        <option [value]="'terminé'">Terminé</option>
+        <option [value]="'résilié'">Résilié</option>
+      </select>
+    </div>
 
+    <div class="form-row">
+      <label>Date début :</label>
+      <input formControlName="dateDebut" type="date" />
+    </div>
 
-  <label>Date début :</label>
-  <input formControlName="dateDebut" type="date" />
+    <div class="form-row">
+      <label>Date fin :</label>
+      <input formControlName="dateFin" type="date" />
+    </div>
 
-  <label>Date fin :</label>
-  <input formControlName="dateFin" type="date" />
+    <div class="form-row">
+      <label>Prestataire :</label>
+      <input formControlName="prestataire" type="text" />
+    </div>
 
-  <label>Prestataire :</label>
-  <input formControlName="prestataire" type="text" />
+    <div class="form-row">
+      <label>Responsable :</label>
+      <input formControlName="responsableLeoni" type="text" />
+    </div>
 
-  <label>Responsable :</label>
-  <input formControlName="responsableLeoni" type="text" />
+    <div class="form-row">
+      <label>Emails associés :</label>
+      <textarea formControlName="emailsPersonnesDediees"></textarea>
+    </div>
 
-  <label>Emails associés :</label>
-  <textarea formControlName="emailsPersonnesDediees"></textarea>
-
-  <div class="actions">
-  <button type="submit">💾 Enregistrer</button>
-  <button type="button" (click)="annuler()">Annuler</button>
+    <div class="form-footer">
+      <button type="submit">💾 Enregistrer</button>
+      <button type="button" (click)="annuler()">Annuler</button>
+    </div>
+  </form>
 </div>
-</form>

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContratService } from '../../services/contrat.service';
-import { Contrat } from '../models/contrat.model';
+import { Contrat, StatutContrat } from '../models/contrat.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DocumentsComponent } from './documents/documents.component';
 import { ActionsComponent } from './actions/actions.component';
@@ -105,7 +105,7 @@ export class DetailContratComponent implements OnInit {
       if (confirmed) {
         this.contratService.resilierContrat(this.contrat.id).subscribe({
           next: (message) => {
-            this.contrat.statut = 'résilié';
+            this.contrat.statut = StatutContrat.Résilié;
             this.snackBar.open(message, '✔️', { duration: 3000 });
           },
           error: (err) => {

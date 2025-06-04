@@ -1,98 +1,112 @@
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px;
-  min-width: 300px;
-  max-width: 500px;
-}
-
-label {
-  font-weight: bold;
-  color: #90caf9;
-  margin-bottom: 4px;
-  }
-
-input,
-textarea {
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  background-color: #e0e0e0;
-  color: #333;
+.modifier-contrat-box {
+    background-color: #011530;
+  color: #e2e8f0;
   width: 100%;
+  max-width: 100%;
+  padding: 30px;
   box-sizing: border-box;
 }
 
-textarea {
-  min-height: 80px;
-}
-
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-button {
-  padding: 10px 16px;
-  border-radius: 6px;
-  border: none;
+.modifier-contrat-box h2 {
+  font-size: 26px;
   font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
+  margin-bottom: 24px;
+  color: #ffffff;
 }
 
-button[type="submit"] {
-  background-color: #1976d2;
-  color: white;
+.contrat-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding: 16px;
 }
 
-button[type="submit"]:hover {
-  background-color: #1565c0;
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
 }
 
-button[type="button"] {
-  background-color: #eeeeee;
+.form-row label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #e2e8f0;
+  display: block;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 60%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  background-color: #f9f9f9;
+  color: #333;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #42a5f5;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+  max-height: 150px;
+}
+
+input[type="date"] {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  background-color: #f9f9f9;
   color: #333;
 }
 
-button[type="button"]:hover {
-  background-color: #cccccc;
-}
-
-.actions {
+.form-footer {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
   margin-top: 24px;
-  background-color: transparent;
 }
 
-.actions button {
-  padding: 10px 16px;
-  border-radius: 6px;
+.form-footer button[type="submit"] {
+  background-color: #28a745;
   border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
   font-weight: bold;
+  font-size: 15px;
+  color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.actions button[type="submit"] {
-  background-color: #1976d2;
-  color: white;
+.form-footer button[type="submit"]:hover {
+  background-color: #218838;
 }
 
-.actions button[type="submit"]:hover {
-  background-color: #1565c0;
-}
-
-.actions button[type="button"] {
+.form-footer button[type="button"] {
   background-color: #eeeeee;
   color: #333;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.actions button[type="button"]:hover {
+.form-footer button[type="button"]:hover {
   background-color: #cccccc;
 }
