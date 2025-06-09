@@ -19,7 +19,7 @@ export class ContratService {
       Authorization: `Bearer ${token}`
     });
   }
- 
+
   getNombreContratsActifsAujourdHui(): Observable<number> {
     return this.http.get<number>(`${this.baseUrl}/count-actifs-aujourdhui`, {
       headers: this.getAuthHeaders()
@@ -72,10 +72,18 @@ updateContrat(id: number, contrat: Partial<Contrat>): Observable<Contrat> {
   return this.http.put<Contrat>(`${this.baseUrl}/${id}`, contrat, { headers });
 }
 
+
+countContratsContinusEnAlerte(): Observable<number> {
+  return this.http.get<number>(`${this.baseUrl}/count-continus-alertes`, {
+    headers: this.getAuthHeaders()
+  });
+}
+
+
 resilierContrat(id: number): Observable<any> {
   return this.http.put(
-    `http://localhost:8081/api/contrats/resilier-et-archiver/${id}`, 
-    null, 
+    `http://localhost:8081/api/contrats/resilier-et-archiver/${id}`,
+    null,
     {
       headers: new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem('token') ?? ''}`
@@ -83,6 +91,12 @@ resilierContrat(id: number): Observable<any> {
       responseType: 'text' // <- car backend renvoie String
     }
   );
+}
+
+getContratsContinusEnAlerte(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.baseUrl}/alertes-continus`, {
+    headers: this.getAuthHeaders()
+  });
 }
 
 }

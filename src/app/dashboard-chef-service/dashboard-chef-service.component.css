@@ -22,27 +22,18 @@ app-contrats-cours {
   grid-column: 1;
   grid-row: 1;
 }
-app-contrats-alerte {
+chef-app-contrats-alerte {
   grid-column: 2;
   grid-row: 1;
 }
 
 /* Échéances */
 .echeance-zone {
-  grid-column: 1 / span 2;
+  grid-column: 2 / span 4;
   grid-row: 2;
   height: 100%;
 }
 
-/* Répartition alignée à gauche avec les cartes + échéances */
-app-repartition-types {
-  grid-column: 3;
-  grid-row: 1 / span 2;
-  height: 93%;
-  display: flex;
-  align-items: stretch;
-  min-width: 100%;
-}
 
 /* Tableau tout en bas */
 
@@ -50,4 +41,23 @@ app-repartition-types {
   grid-column: 1 / span 3;
   margin-top: 24px;
   margin-right: 30px;
+}
+app-contrats-nettoyage {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+app-contrats-restauration {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+app-contrats-gardiennage {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+chef-app-contrats-alerte {
+  grid-column: 1 / span 1; /* ou 2 si tu veux qu'elle prenne 2 colonnes */
+  grid-row: 2;
 }

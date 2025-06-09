@@ -9,6 +9,7 @@ import { DetailContratComponent } from './detail-contrat/detail-contrat.componen
 import { ArchiveContratComponent } from './archive-contrat/archive-contrat.component';
 import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
 import { ModifierContratComponent } from './detail-contrat/actions/modifier-contrat/modifier-contrat.component';
+import { DashboardChefServiceComponent } from './dashboard-chef-service/dashboard-chef-service.component';
 
 
 
@@ -22,6 +23,7 @@ export const routes: Routes = [
   { path: 'archives', component: ArchiveContratComponent },
   { path: 'utilisateurs', component: UtilisateursComponent },
   { path: 'modifier-contrat/:id', component: ModifierContratComponent },
+   { path: 'chef-service', component: DashboardChefServiceComponent },
 
 
 ];

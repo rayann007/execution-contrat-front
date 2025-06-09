@@ -1,4 +1,4 @@
-<app-navbar *ngIf="!isLoginRoute()">
+<app-navbar *ngIf="!isLoginRoute() && currentUser === 'admin'">
   <div class="main-layout">
     <app-header></app-header>
     <div class="main-content">
@@ -7,6 +7,21 @@
     <app-footer></app-footer>
   </div>
 </app-navbar>
+
+<chef-app-navbar *ngIf="!isLoginRoute() && currentUser === 'user'">
+  <div class="main-layout">
+    <chef-app-header></chef-app-header>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</chef-app-navbar>
+
+
+
+
+
 
 <ng-container *ngIf="isLoginRoute()">
   <router-outlet></router-outlet>

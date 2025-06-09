@@ -1,0 +1,18 @@
+<div class="echeances-container">
+  <h3 class="echeances-title">Échéances ce mois</h3>
+  <div class="echeances-separator"></div>
+
+  <div *ngIf="aucunContrat" class="echeances-empty-message">
+    Aucun contrat continu avec échéance ce mois.
+  </div>
+
+  <div class="echeances-content" *ngIf="!aucunContrat">
+    <div class="item" *ngFor="let e of echeances">
+      <div class="icon">
+        <mat-icon>{{ e.icon }}</mat-icon>
+      </div>
+      <div class="date">{{ e.date | date: 'dd' }}</div>
+      <div class="label">{{ e.label }}</div>
+    </div>
+  </div>
+</div>
