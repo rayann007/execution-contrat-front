@@ -59,7 +59,8 @@ export class CreateContratComponent implements OnInit {
       emailResponsable: ['', [Validators.required, Validators.email]],
       emailsPersonnesDediees: ['', Validators.required],
       dateDebut: ['', Validators.required],
-      dateFin: ['', Validators.required]
+      dateFin: ['', Validators.required],
+      statut: 'en_cours'
     });
   }
 

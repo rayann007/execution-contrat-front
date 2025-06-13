@@ -1,0 +1,23 @@
+<h2>📎 Ajouter des documents</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <label for="fichier">Sélectionner un ou plusieurs fichiers :</label>
+  <input
+    type="file"
+    id="fichier"
+    (change)="onFileSelected($event)"
+    multiple
+    accept=".pdf,.doc,.docx,.txt"
+    required
+  />
+
+  <!-- Affiche les fichiers sélectionnés -->
+  <ul *ngIf="selectedFiles.length > 0">
+    <li *ngFor="let file of selectedFiles">{{ file.name }}</li>
+  </ul>
+
+  <div class="actions">
+    <button type="submit" [disabled]="selectedFiles.length === 0">💾 Enregistrer</button>
+    <button type="button" (click)="dialogRef.close()">Annuler</button>
+  </div>
+</form>

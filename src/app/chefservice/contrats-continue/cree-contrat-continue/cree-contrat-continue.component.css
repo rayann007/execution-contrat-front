@@ -1,0 +1,155 @@
+.create-contrat-box {
+  background-color: transparent;
+  color: #e2e8f0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.create-contrat-box h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #ffffff;
+}
+
+.contrat-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding: 16px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.form-row label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #e2e8f0;
+  display: block;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  background-color: #f9f9f9;
+  color: #333;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #42a5f5;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+  max-height: 150px;
+}
+
+.type-radio {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date-block {
+  width: 100%;
+}
+
+.date-block label {
+  font-size: 14px;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+input[type="date"] {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.add-detail-section h3 {
+  font-size: 16px;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.add-detail-btn {
+  background-color: #1e88e5;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.add-detail-btn span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-detail-btn:hover {
+  background-color: #1565c0;
+}
+.type-radio-inline {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.type-radio-inline label {
+  font-size: 14px;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

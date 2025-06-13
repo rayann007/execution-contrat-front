@@ -1,0 +1,29 @@
+<div class="documents-section">
+  <h3>📎 Documents liés</h3>
+
+  <table *ngIf="documents.length > 0">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let document of documents">
+        <td>{{ document.nomFichier }}</td>
+        <td>{{ document.dateCreation | date: 'dd/MM/yyyy' }}</td>
+        <td>
+          <button (click)="downloadDocument(document.id)">⬇️</button>
+          <button (click)="renameDocument(document.id)">✏️</button>
+          <button (click)="deleteDocument(document.id)">🗑️</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="documents.length === 0" class="empty-docs">Aucun document</div>
+
+  <button (click)="downloadAllAsZip()" class="zip-btn">📦 Télécharger tout</button>
+</div>

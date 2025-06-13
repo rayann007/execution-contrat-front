@@ -1,0 +1,43 @@
+<div class="create-contrat-box">
+  <h2>Créer un contrat</h2>
+
+  <form [formGroup]="contratForm" (ngSubmit)="onSubmit()" class="contrat-form">
+
+    <div class="form-row">
+      <input type="text" formControlName="nomEmploye" placeholder="Nom de l'employé" required />
+    </div>
+
+    <div class="form-row type-radio">
+      <label>Type de contrat :</label>
+        <div class="type-radio-inline">
+      <label><input type="radio" value="gardiennage" formControlName="type" /> Gardiennage</label>
+      <label><input type="radio" value="nettoyage" formControlName="type" /> Nettoyage</label>
+      <label><input type="radio" value="restauration" formControlName="type" /> Restauration</label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <input type="text" formControlName="prestataire" placeholder="Prestataire" required />
+      <select formControlName="serviceConcerne" required>
+        <option value="">-- Service concerné --</option>
+        <option *ngFor="let service of services" [value]="service">{{ service }}</option>
+      </select>
+    </div>
+
+
+    <div class="form-row">
+      <div class="date-block">
+        <label>Date de début</label>
+        <input type="date" formControlName="dateDebut" required />
+      </div>
+      <div class="date-block">
+        <label>Date de fin</label>
+        <input type="date" formControlName="dateFin" required />
+      </div>
+    </div>
+
+    <div class="form-footer">
+      <button type="submit">Créer un contrat</button>
+    </div>
+  </form>
+</div>

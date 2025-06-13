@@ -1,0 +1,47 @@
+.documents-section {
+  background-color: #062c4f;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  margin-top: 20px;
+}
+
+.documents-section h3 {
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #1e4e74;
+  text-align: left;
+}
+
+button {
+  margin-right: 6px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: #1e4e74;
+  color: white;
+}
+
+.zip-btn {
+  background-color: #1976d2;
+  color: white;
+  font-weight: bold;
+}
+
+.empty-docs {
+  font-style: italic;
+  color: #ccc;
+}

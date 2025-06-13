@@ -29,13 +29,15 @@ export class DocumentService {
     });
   }
 
-  renameDocument(id: number, newName: string): Observable<any> {
-    const params = new HttpParams().set('newName', newName);
-    return this.http.put(`${this.baseUrl}/${id}/rename`, null, {
-      headers: this.getAuthHeaders(),
-      params
-    });
-  }
+renameDocument(id: number, newName: string): Observable<string> {
+  const params = new HttpParams().set('newName', newName);
+  return this.http.put(`${this.baseUrl}/${id}/rename`, null, {
+    headers: this.getAuthHeaders(),
+    params,
+    responseType: 'text'  // ✅ indique qu'on attend du texte
+  });
+}
+
 
   downloadZip(contratId: number): Observable<Blob> {
     return this.http.get(`${this.baseUrl}/zip-by-contrat/${contratId}`, {
@@ -47,8 +49,13 @@ export class DocumentService {
   uploadDocument(contratId: number, file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('contratId', contratId.toString());
+if (!contratId) {
+  console.error('❌ contratId est undefined');
+  throw new Error('contratId est requis pour uploadDocument');
+}
+console.log("📤 Upload", file.name, "pour contrat ID :", contratId);
 
+formData.append('contratId', contratId.toString());
     // ⚠️ Pas besoin de passer manuellement les headers ici pour `multipart/form-data`
     return this.http.post(`${this.baseUrl}/upload`, formData, {
       headers: new HttpHeaders({

@@ -1,0 +1,43 @@
+<div class="modifier-contrat-box" *ngIf="form">
+  <h2>✏️ Modifier contrat continu</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <input type="text" formControlName="nomContrat" placeholder="Nom de l'employé" />
+    </div>
+
+    <div class="form-row">
+      <input type="text" formControlName="prestataire" placeholder="Prestataire" />
+      <select formControlName="serviceConcerne">
+        <option value="">-- Service concerné --</option>
+        <option *ngFor="let service of ['Gardiennage', 'Nettoyage', 'Restauration']" [value]="service">{{ service }}</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="date-block">
+        <label>Date de début</label>
+        <input type="date" formControlName="dateDebut" />
+      </div>
+      <div class="date-block">
+        <label>Date de fin</label>
+        <input type="date" formControlName="dateFin" />
+      </div>
+    </div>
+
+    <!-- 🆕 Champ pour le statut -->
+    <div class="form-row">
+      <label for="statut">Statut du contrat :</label>
+      <select formControlName="statut" id="statut">
+        <option value="">-- Sélectionner un statut --</option>
+        <option value="En cours">En cours</option>
+        <option value="Résilié">Résilié</option>
+        <option value="Archivé">Archivé</option>
+      </select>
+    </div>
+
+    <div class="form-footer">
+      <button type="submit">💾 Enregistrer</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,38 @@
+.contrats-wrapper {
+
+  background-color: #011530;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Zone verticale contenant les 2 composants */
+.contrat-delai-line {
+  display: flex;
+  flex-direction: column; /* ✅ empile verticalement */
+  gap: 24px;
+}
+
+/* Les deux composants prennent 100% */
+app-create-contrat,
+app-add-delai {
+  width: 60% !important;     /* ✅ force la pleine largeur */
+  max-width: 60% !important;
+  background-color: #011530;;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Zone upload alignée à droite en bas */
+.upload-zone {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+

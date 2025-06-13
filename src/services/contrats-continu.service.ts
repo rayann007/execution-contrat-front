@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Contrat } from '../app/models/contrat.model';
 
 export interface ContratContinue {
-  id: number;
+  id?: number;
   typeService: 'gardiennage' | 'nettoyage' | 'restauration';
   contrat: Contrat;
 }
@@ -43,6 +43,10 @@ private apiUrl = 'http://localhost:8081/api/contrats-continue';
   }
 getContratsContinusEcheanceMois(): Observable<any[]> {
   return this.http.get<any[]>('http://localhost:8081/api/contrats/echeances-mois-continus');
+}
+
+resilierContrat(id: number): Observable<any> {
+  return this.http.put(`http://localhost:8081/api/contrats-continue/${id}/resilier`, null);
 }
 
 

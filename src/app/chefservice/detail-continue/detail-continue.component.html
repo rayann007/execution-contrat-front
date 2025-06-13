@@ -1,0 +1,38 @@
+<div class="contrat-detail-container" *ngIf="contrat">
+  <div class="contrat-card">
+    <div class="header">
+      <h2>Détails du contrat</h2>
+    </div>
+
+    <div class="body-grid">
+      <div class="infos">
+        <p><strong>Type</strong> : {{ contrat.typeService }}</p>
+        <p><strong>Nom</strong> : {{ contrat.contrat.nomContrat }}</p>
+        <p><strong>Statut</strong> : {{ contrat.contrat.statut }}</p>
+        <p>
+          <strong>Dates</strong> : {{ contrat.contrat.dateDebut }} →
+          {{ contrat.contrat.dateFin }}
+        </p>
+        <p><strong>Prestataire</strong> : {{ contrat.contrat.prestataire }}</p>
+
+      </div>
+<ng-container *ngIf="!archiveMode">
+  <app-actions
+    [contratId]="contrat.contrat.id"
+    [detailContrat]="contrat"
+    (resilierContrat)="onResilierContrat()"
+    (modifier)="onModifier()"
+  ></app-actions>
+</ng-container>
+
+    </div>
+
+  </div>
+</div>
+
+
+    <ng-container *ngIf="contrat">
+<app-documents [contratId]="contrat.contrat?.id!"></app-documents>
+</ng-container>
+<div *ngIf="archiveMode" class="archive-banner">🗂️ Ce contrat est archivé</div>
+

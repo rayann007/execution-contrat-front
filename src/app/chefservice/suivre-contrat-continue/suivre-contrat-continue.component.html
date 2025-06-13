@@ -1,0 +1,58 @@
+<div class="contrats-wrapper">
+  <h2>Suivre un contrat</h2>
+
+  <div class="contrats-filtres">
+    <input type="text" [(ngModel)]="searchText" placeholder="Nom de l'employé" />
+
+    <select [(ngModel)]="selectedType">
+      <option value="">Tous types</option>
+      <option>Gardiennage</option>
+      <option>Nettoyage</option>
+      <option>Restauration</option>
+    </select>
+
+    <select [(ngModel)]="selectedService">
+      <option value="">Tous services</option>
+      <option>Gardiennage</option>
+      <option>Nettoyage</option>
+      <option>Restauration</option>
+
+    </select>
+
+  <!-- Filtre par période -->
+ <div class="filtre-date">
+    <label for="dateDebutFiltre">Date début</label>
+    <input type="date" id="dateDebutFiltre" [(ngModel)]="dateDebutFiltre" />
+  </div>
+
+  <div class="filtre-date">
+    <label for="dateFinFiltre">Date fin</label>
+    <input type="date" id="dateFinFiltre" [(ngModel)]="dateFinFiltre" />
+  </div>
+</div>
+
+  <table class="table-contrats">
+    <thead>
+      <tr>
+        <th>Nom de l'employé</th>
+        <th>Type</th>
+        <th>Début / Fin</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr *ngFor="let contrat of contratsFiltres()">
+  <td>{{ contrat.contrat?.nomContrat || '---' }}</td>
+  <td>{{ contrat.typeService }}</td>
+  <td>
+    {{ contrat.contrat?.dateDebut | date: 'dd/MM/yyyy' }}
+    -
+    {{ contrat.contrat?.dateFin | date: 'dd/MM/yyyy' }}
+  </td>
+  <td><button (click)="voirDetails(contrat.id)">Détails</button></td>
+</tr>
+
+    </tbody>
+  </table>
+
+</div>
