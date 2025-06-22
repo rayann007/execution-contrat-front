@@ -22,20 +22,27 @@ export class LoginComponent {
     });
   }
 
-  onLogin(): void {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
+onLogin(): void {
+  if (this.loginForm.valid) {
+    const { email, password } = this.loginForm.value;
 
-      this.authService.login(email, password).subscribe({
-        next: (response: { token: string, role: string }) => {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('role', response.role);
+    this.authService.login(email, password).subscribe({
+      next: (response: { token: string, role: string }) => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('role', response.role);
+
+        // 🎯 Redirection selon le rôle
+        if (response.role === 'SUPPORT') {
+          this.router.navigate(['/chef-service']);
+        } else {
           this.router.navigate(['/dashboard']);
-        },
-        error: () => {
-          this.errorMessage = 'Email ou mot de passe incorrect.';
         }
-      });
-    }
+      },
+      error: () => {
+        this.errorMessage = 'Email ou mot de passe incorrect.';
+      }
+    });
   }
+}
+
 }

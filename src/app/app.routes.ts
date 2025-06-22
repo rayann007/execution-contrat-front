@@ -1,3 +1,4 @@
+import { RapportContratComponent } from './rapport-contrat/rapport-contrat.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../auth/login/login.component';
@@ -15,6 +16,9 @@ import { SuivreContratContinueComponent } from './chefservice/suivre-contrat-con
 import { ArchiveContinueComponent } from './chefservice/archive-continue/archive-continue.component';
 import { DetailContinueComponent } from './chefservice/detail-continue/detail-continue.component';
 import { ModifierContinueComponent } from './chefservice/detail-continue/actions/modifier-contrat/modifier-contrat.component';
+import { EvaluationComponent } from './evaluation-admin/evaluation.component';
+import { EvaluerContratComponent } from './evaluer-contrat/evaluer-contrat.component';
+import { RapportComponent } from './rapport/rapport.component';
 
 
 
@@ -28,6 +32,11 @@ export const routes: Routes = [
   { path: 'archives', component: ArchiveContratComponent },
   { path: 'utilisateurs', component: UtilisateursComponent },
   { path: 'modifier-contrat/:id', component: ModifierContratComponent },
+  { path: 'evaluation', component: EvaluationComponent },
+  { path: 'rapports', component: RapportComponent },
+  { path: 'evaluer-contrat/:id', component: EvaluerContratComponent },
+  { path: 'rapport-contrat/:id', component: RapportContratComponent },
+
   { path: 'chef-service', component: DashboardChefServiceComponent },
   { path: 'cree-continue', component: ContratsContinueComponent },
   { path: 'suivre-continue', component: SuivreContratContinueComponent },

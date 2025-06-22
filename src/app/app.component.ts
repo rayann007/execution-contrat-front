@@ -15,7 +15,7 @@ import { ChefHeaderComponent } from './dashboard-chef-service/header/header.comp
 export class AppComponent {
    constructor(public router: Router) {}
 
-   currentUser = 'user';
+   currentUser = 'admin';
 
    isLoginRoute(): boolean {
    return this.router.url.includes('/login');

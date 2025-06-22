@@ -1,0 +1,33 @@
+<div class="rapport-container" id="rapport-evaluation">
+  <h2>Rapport du Contrat #{{ contratId }}</h2>
+
+<div class="evaluations">
+  <div *ngFor="let eval of evaluations" class="evaluation-bar-container">
+    <div
+      class="bar"
+      [ngStyle]="{
+        'height.px': getHauteur(eval.couleurIndicateur),
+        'background-color': getCouleurHex(eval.couleurIndicateur)
+      }"
+    >
+
+      <div class="tooltip">
+
+        📝 {{ eval.commentaire }}
+      </div>
+    </div>
+    <div class="info">
+      <strong>{{ eval.dateEvaluation }}</strong><br />
+      {{ eval.couleurIndicateur }}
+    </div>
+  </div>
+</div>
+
+
+
+
+  <div class="actions">
+    <button (click)="telechargerPDF()">📄 Télécharger rapport</button>
+    <button (click)="ajouterAuxDocuments()">📎 Ajouter aux documents</button>
+  </div>
+</div>

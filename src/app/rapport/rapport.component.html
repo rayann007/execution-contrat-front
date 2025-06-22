@@ -1,0 +1,56 @@
+<div class="contrats-wrapper">
+  <h2>Génerer un rapport pour un contrat</h2>
+
+  <div class="contrats-filtres">
+    <input type="text" [(ngModel)]="searchText" placeholder="Nom du contrat" />
+
+    <select [(ngModel)]="selectedType">
+      <option value="">Tous types</option>
+      <option value="Travaux">Travaux</option>
+      <option value="Prestation">Prestation</option>
+      <option value="Continu">Continu</option>
+    </select>
+
+    <select [(ngModel)]="selectedService">
+      <option value="">Tous services</option>
+      <option>RH</option>
+      <option>IT</option>
+      <option>Maintenance</option>
+      <option>Finance</option>
+      <option>Logistique</option>
+    </select>
+
+
+
+    <div class="filtre-date">
+      <label for="dateDebutFiltre">Date début</label>
+      <input type="date" id="dateDebutFiltre" [(ngModel)]="dateDebutFiltre" />
+    </div>
+
+    <div class="filtre-date">
+      <label for="dateFinFiltre">Date fin</label>
+      <input type="date" id="dateFinFiltre" [(ngModel)]="dateFinFiltre" />
+    </div>
+  </div>
+
+  <table class="table-contrats">
+    <thead>
+      <tr>
+        <th>Nom du contrat</th>
+        <th>Type</th>
+        <th>Début / Fin</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contrat of contratsFiltres()">
+        <td>{{ contrat.nomContrat }}</td>
+        <td>{{ contrat.type }}</td>
+        <td>{{ contrat.dateDebut | date: 'dd/MM/yyyy' }} - {{ contrat.dateFin | date: 'dd/MM/yyyy' }}</td>
+        <td>
+          <button (click)="evaluerContrat(contrat.id)">Générer un rapport</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

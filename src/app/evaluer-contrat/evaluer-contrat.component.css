@@ -1,0 +1,102 @@
+:host {
+  display: block;
+  background-color: #011530;
+  min-height: 100vh;
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #e3f2fd;
+}
+
+.evaluer-contrat {
+  background-color: #062c4f;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.evaluer-contrat h2 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #1e4e74;
+  padding-bottom: 10px;
+}
+
+.table-delais {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table-delais th, .table-delais td {
+  padding: 12px;
+  border: 1px solid #1e4e74;
+  text-align: left;
+  font-size: 14px;
+}
+
+.table-delais th {
+  background-color: #0a2c50;
+  color: #90caf9;
+}
+
+.table-delais td {
+  background-color: #072342;
+  color: #e3f2fd;
+}
+
+button {
+  padding: 10px 16px;
+  background-color: #1976d2;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+button[disabled] {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.resultat {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.resultat span {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-left: 8px;
+  text-transform: uppercase;
+}
+
+.resultat .vert {
+  background-color: #2e7d32;
+  color: #c8e6c9;
+}
+
+.resultat .jaune {
+  background-color: #fbc02d;
+  color: #fffde7;
+}
+
+.resultat .orange {
+  background-color: #f57c00;
+  color: #fff3e0;
+}
+
+.resultat .rouge {
+  background-color: #c62828;
+  color: #ffcdd2;
+}

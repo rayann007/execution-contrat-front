@@ -1,0 +1,87 @@
+.rapport-container {
+  background-color: #011530;
+  color: white;
+  min-height: 100vh;
+    padding: 30px;
+}
+
+h2{
+    font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+.evaluations {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 250px; /* hauteur maximale du diagramme */
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.bar-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar {
+  width: 50px;
+  margin: 5px;
+  background-color: gray;
+  transition: height 0.3s ease;
+}
+
+.bar-label {
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+  max-width: 70px;
+}
+.evaluations {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.evaluation-bar-container {
+  text-align: center;
+}
+
+.bar {
+  width: 60px;
+  border-radius: 8px 8px 0 0;
+  transition: height 0.3s;
+}
+.bar {
+  position: relative;
+  width: 60px;
+  border-radius: 8px 8px 0 0;
+  transition: height 0.3s;
+  cursor: pointer;
+}
+
+/* Infobulle masquée par défaut */
+.tooltip {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Affichage au survol */
+.bar:hover .tooltip {
+  display: block;
+}
